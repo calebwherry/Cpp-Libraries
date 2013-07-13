@@ -13,6 +13,7 @@ I am most interested in some of the more advanced tree structures, graph searchi
 Dependencies
 ------------
 
+## Debian-based systems
 The commands to install these dependencies are for Debian-based systems. However, you should be able to get them using any ol' package manager.
 
 #### Boost:
@@ -45,6 +46,25 @@ Now we need to go to the src directory, create the libs, and move them to the li
     $ sudo cmake CMakeLists.txt
     $ sudo make
     $ sudo cp *.a /usr/lib
+
+## RedHat-based systems
+This example was done on a box running Amazon EC2 Linux, so the package names may be *slightly* different on a different rpm-based distro.
+
+#### G++:
+    $ sudo yum install gcc-c++
+
+#### Boost:
+Installs Boost headers in /usr/include:
+
+    $ sudo yum install boost boost-devel
+
+#### GNU Scientific Library
+
+    $ sudo yum install gsl dsl-devel
+
+#### Google Test:
+
+    $ sudo yum install gtest gtest-devel
 
 Install
 -----------
