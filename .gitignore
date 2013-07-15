@@ -18,3 +18,4 @@
 
 # Artifact folder
 bin/
+qa/build*/

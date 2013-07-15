@@ -58,3 +58,6 @@ clean:
 	@echo -n '** Deleting directory $(DOC_DIR)... '
 	@if [ -d $(DOC_DIR)/html ]; then $(RM) $(DOC_DIR)/html; fi
 	@echo 'done.'
+	@echo -n '** Deleting build test directories $(ROOT_DIR)/qa/build*/... '
+	@$(RM) $(ROOT_DIR)/qa/build*/
+	@echo 'done.'
