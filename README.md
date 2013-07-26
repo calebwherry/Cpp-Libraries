@@ -10,67 +10,94 @@ I am most interested in some of the more advanced tree structures, graph searchi
 
 ## Dependencies
 
+__Important Note:__ We HAVE NOT included `sudo` on every command here since it sort of takes away from what we are going for. Most of these commands stand-alone will need `sudo` to run so we are just going to leave it off for brevity. Pleae add it in as needed.
+
 ### Debian-based Systems
 
 Let us first get the system's package details up-to-date:
 
-    $ sudo apt-get update
+    $ apt-get update
     
 #### Build Tools:
 
-    $ sudo apt-get install build-essentials
+Installs all the goodies that are neccessary for development such as gcc and g++. You are more than welcome to install them individually but as a catch-all, we have included them all:
+
+    $ apt-get install build-essentials
 
 #### Boost:
 
 Installs Boost headers in /usr/include:
 
-    $ sudo apt-get install libboost-dev
+    $ apt-get install libboost-dev
 
 #### GNU Scientific Library
 
-    $ sudo apt-get install gsl-bin libgsl0-dev
+    $ apt-get install gsl-bin libgsl0-dev
 
 #### Google Mock:
 
-    $ sudo apt-get install google-mock
+    $ apt-get install google-mock
 
 #### Google Test:
 
 For GTest, you will need cmake to create the libs:
 
-    $ sudo apt-get install cmake
+    $ apt-get install cmake
 
 Once that is complete, get the GTest src (puts in /usr/src):
 
-    $ sudo apt-get install libgtest-dev
+    $ apt-get install libgtest-dev
 
 Now we need to go to the src directory, create the libs, and move them to the lib directory:
 
     $ cd /usr/src/gtest
-    $ sudo cmake CMakeLists.txt
-    $ sudo make
-    $ sudo cp *.a /usr/lib
+    $ cmake CMakeLists.txt
+    $ make
+    $ cp *.a /usr/lib
 
 ### RedHat-based Systems
+
 This example was done on a box running Amazon EC2 Linux, so the package names may be *slightly* different on a different rpm-based distro.
 
 #### G++:
-    $ sudo yum install gcc-c++
+    $ yum install gcc-c++
 
 #### Boost:
+
 Installs Boost headers in /usr/include:
 
-    $ sudo yum install boost boost-devel
+    $ yum install boost boost-devel
 
 #### GNU Scientific Library
 
-    $ sudo yum install gsl dsl-devel
+    $ yum install gsl dsl-devel
 
 #### Google Test:
 
-    $ sudo yum install gtest gtest-devel
+    $ yum install gtest gtest-devel
+
+### MAC OS X Systems
+
+We first recommend using (Homebrew)[http://brew.sh/] as your package manager, it simplifies many steps in getting at these libraries. Go to the link provided and follow the instructions for how to get it on our system.
+
+#### Boost
+
+Coming soon...
+
+#### GNU Scientific Library
+
+Coming soon...
+
+#### Google Mock
+
+Coming soon...
+
+#### Google Test
+
+Coming soon...
 
 ## Install
+
 The easiest way to get the source is by cloning this git repo:
 
     $ git clone git@github.com:calebwherry/Cpp-Libraries.git
