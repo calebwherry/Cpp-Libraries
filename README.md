@@ -78,7 +78,7 @@ Installs Boost headers in /usr/include:
 
 ### MAC OS X Systems
 
-We first recommend using (Homebrew)[http://brew.sh/] as your package manager, it simplifies many steps in getting at these libraries. Go to the link provided and follow the instructions for how to get it on our system.
+We first recommend using [Homebrew](http://brew.sh/) as your package manager, it simplifies many steps in getting at these libraries. Go to the link provided and follow the instructions for how to get it on our system.
 
 #### Boost
 
