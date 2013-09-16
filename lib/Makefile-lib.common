@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile-lib.common
+##      \file Makefile-lib.common
 ##
 ##  Description:
 ##      \brief Library-level common make rules for C++ Libraries
@@ -12,7 +12,7 @@
 #############################
 
 # Double directoy up because this path is expanded when it is included (which is a directory down):
-include $(abspath ../../makefile.common)
+include $(abspath ../../Makefile.common)
 
 OBJS = $(SRC:.cpp=.o)
 

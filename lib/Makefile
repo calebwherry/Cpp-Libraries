@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief Library-level makefile for C++ Libraries

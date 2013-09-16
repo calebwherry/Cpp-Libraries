@@ -50,7 +50,7 @@ fi
 # Clone the git repo for the nightly build:
 echo -n "Cloning git project ${FULL_PROJ} into ${BUILD_DIR}... "
 (
-git clone git@github.com:${FULL_PROJ}.git "${BUILD_DIR}"
+git clone https://github.com/${FULL_PROJ} "${BUILD_DIR}"
 ) >> ${LOGFILE} 2>&1
 STATUS=$?
 

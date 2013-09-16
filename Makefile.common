@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile.common
+##      \file Makefile.common
 ##
 ##  Description:
 ##      \brief Top-level common make rules for C++ Libraries
@@ -42,7 +42,7 @@ ARFLAGS = rscv
 ASFLAGS +=
 
 # C++ Compiler flags:
-CXXFLAGS += -Wall -Wextra -g -O2 #-std=c++0x
+CXXFLAGS += -Wall -Wextra -g -O2 -std=c++0x
 
 # Linker flags:
 LDFLAGS +=

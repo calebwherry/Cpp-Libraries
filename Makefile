@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief Top-level makefile for C++ Libraries
@@ -12,13 +12,13 @@
 #############################
 
 # Include all common make rules:
-include makefile.common
+include Makefile.common
 
 # Phony targets:
-.PHONY: default lib test run-test doc install clean
+.PHONY: default lib test exmaple run-test doc install clean
 
 # Default rule:
-default: lib test doc
+default: lib test example doc
 
 # Compile all libs:
 lib:
@@ -26,7 +26,11 @@ lib:
 
 # Compile all tests:
 test:
-	$(MAKE) -C test
+	$(MAKE) -C qa/test
+
+# Compile all examples:
+example:
+	$(MAKE) -C example
 
 # Run all tests:
 run-test:
@@ -51,7 +55,7 @@ install:
 # I probably should create a distclean as well but... too lazy right now.
 clean:
 	$(MAKE) -C lib clean
-	$(MAKE) -C test clean
+	$(MAKE) -C qa/test clean
 	@echo -n '** Deleting directory $(BIN_DIR)... '
 	@if [ -d $(BIN_DIR) ]; then $(RM) $(BIN_DIR); fi
 	@echo 'done.'

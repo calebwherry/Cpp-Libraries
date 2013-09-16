@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief Searching library makefile for C++ Libraries
@@ -14,4 +14,4 @@
 SRC = SearchUtil.cpp
 LIB = libsearching.a
 
-include $(abspath ../makefile-lib.common)
+include $(abspath ../Makefile-lib.common)

@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief Searching tests makefile for C++ Libraries
@@ -11,10 +11,10 @@
 ##
 #############################
 
-ROOT = $(abspath ../..)
+ROOT = $(abspath ../../..)
 SRCS = $(wildcard *.cpp)
 PROGS = $(SRCS:%.cpp=%)
 INCLUDES += -I$(ROOT)/lib/Searching
 LIBS += -L$(ROOT)/lib/Searching -lsearching
 
-include $(abspath ../makefile-test.common)
+include $(abspath ../Makefile-test.common)

@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief DX tests makefile
@@ -11,10 +11,10 @@
 ##
 #############################
 
-ROOT = $(abspath ../..)
+ROOT = $(abspath ../../..)
 SRCS = $(wildcard *.cpp)
 PROGS = $(SRCS:%.cpp=%)
 INCLUDES += -I${ROOT}/lib/DataStructures
 LIBS +=
 
-include $(abspath ../makefile-test.common)
+include $(abspath ../Makefile-test.common)

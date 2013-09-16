@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief String Utilities tests makefile for C++ Libraries
@@ -11,10 +11,10 @@
 ##
 #############################
 
-ROOT = $(abspath ../..)
+ROOT = $(abspath ../../..)
 SRCS = $(wildcard *.cpp)
 PROGS = $(SRCS:%.cpp=%)
 INCLUDES += -I$(ROOT)/lib/StringUtil
 LIBS += -L$(ROOT)/lib/StringUtil -lstringUtil
 
-include $(abspath ../makefile-test.common)
+include $(abspath ../Makefile-test.common)

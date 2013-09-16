@@ -1,7 +1,7 @@
 #############################
 ##
 ##  File:
-##      \file makefile
+##      \file Makefile
 ##
 ##  Description:
 ##      \brief String Utility library makefile for C++ Libraries
@@ -14,4 +14,4 @@
 SRC = StringUtil.cpp
 LIB = libstringUtil.a
 
-include $(abspath ../makefile-lib.common)
+include $(abspath ../Makefile-lib.common)
