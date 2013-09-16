@@ -101,10 +101,21 @@ Coming soon...
 The easiest way to get the source is by cloning this git repo:
 
     $ git clone git@github.com:calebwherry/Cpp-Libraries.git
+    
+Or, if you do not have git installed, you can use curl and untar the tarball inline:
 
-CD into the new directory and run make:
+    $ curl -L http://github.com/calebwherry/Cpp-Libraries/tarball/HEAD | tar zx
+    
+You can also get a specific release with curl like so:
 
-    $ cd Cpp-Libraries
+    $ curl -L http://github.com/calebwherry/Cpp-Libraries/tarball/v0.0.0-alpha | tar zx
+    
+And if you don't have either git _or_ curl, you can use wget:
+
+    $ wget http://github.com/calebwherry/Cpp-Libraries/tarball/HEAD -O - | tar zx
+
+After using one of the 3 above methods, CD into the new directory and run `make` and `make install`:
+
     $ make
     $ make install
 
