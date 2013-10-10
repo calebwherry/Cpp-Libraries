@@ -16,6 +16,9 @@
 *.swp
 *.swo
 
+# Mac files
+.DS_Store
+
 # Artifact folder
 bin/
 qa/build*/
