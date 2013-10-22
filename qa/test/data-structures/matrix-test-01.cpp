@@ -1,4 +1,5 @@
-/////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
 //
 //  File:
 //      \file matrix-tests-01.cpp
@@ -9,7 +10,8 @@
 //  Author:
 //      \author J. Caleb Wherry
 //
-/////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
 
 // Compiler Includes:
 //
@@ -29,6 +31,7 @@ using namespace std;
 namespace
 {
 
+// This doesn't currently work for some reason?
 class Matrix_Properties : public ::testing::Test
 {
 	protected:
@@ -51,12 +54,16 @@ class Matrix_Properties : public ::testing::Test
 TEST_F(Matrix_Properties, Properties)
 {
 
+	// Matrices redefined here since fixture is not currently working...
+
 	// Real matrices:
 	M::Matrix<double> a(3,3,1.0),
 										b(3,4,0);
 
 	// Complex matrices:
-	M::Matrix<complex<double>> c(3,3,complex<double>(1,1));
+	M::Matrix<complex<double>> c(3,3,complex<double>(1,1)),
+														 d(3,4,complex<double>(3,3)),
+														 e(4,4,complex<double>(1,0)); // No imaginary component
 
 	cout << "A: " << endl;
 	a.print();
@@ -64,11 +71,41 @@ TEST_F(Matrix_Properties, Properties)
 	b.print();
 	cout << "C: " << endl;
 	c.print();
+	cout << "D: " << endl;
+	d.print();
+	cout << "E: " << endl;
+	e.print();
 
-	ASSERT_TRUE( a.isSquare() );
-	ASSERT_TRUE( a.isReal() );
+	// A:
+	ASSERT_TRUE ( a.isSquare() );
+	ASSERT_TRUE ( a.isReal() );
 	ASSERT_FALSE( a.isComplex() );
-	ASSERT_TRUE( a.isSymmetric() );
+	ASSERT_TRUE ( a.isSymmetric() );
+
+	// B:
+	ASSERT_FALSE( b.isSquare() );
+	ASSERT_TRUE ( b.isReal() );
+	ASSERT_FALSE( b.isComplex() );
+	ASSERT_FALSE( b.isSymmetric() );
+
+	// C:
+	ASSERT_TRUE ( c.isSquare() );
+	ASSERT_FALSE( c.isReal() );
+	ASSERT_TRUE ( c.isComplex() );
+	ASSERT_TRUE ( c.isSymmetric() );
+
+	// D:
+	ASSERT_FALSE( d.isSquare() );
+	ASSERT_FALSE( d.isReal() );
+	ASSERT_TRUE ( d.isComplex() );
+	ASSERT_TRUE ( d.isSymmetric() );
+
+	// E:
+	ASSERT_TRUE ( e.isSquare() );
+	ASSERT_FALSE( e.isReal() );
+	ASSERT_TRUE ( e.isComplex() );
+	ASSERT_TRUE ( e.isSymmetric() );
+
 }
 
 } // anon namepace 

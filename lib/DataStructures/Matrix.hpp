@@ -123,9 +123,6 @@ namespace matrix
 	template <typename T>
 	void Matrix<T>::print()
 	{
-		// Newline at beginning to get matrix on its own line:
-		std::cout << std::endl;
-
 		// Iterate through and print out each element:
 		for (const auto& row : matrix)
 		{
@@ -151,6 +148,19 @@ namespace matrix
 	template <typename T>
 	bool Matrix<T>::isReal()
 	{
+		// Iterate over all elements to see if they all have non-zero complex parts:
+		for (const auto& row : matrix)
+		{
+			for (const auto& col : row)
+			{
+				// If a complex part if found, the matrix is not real:
+				const auto& a_ij = col;
+				if ( std::imag((std::complex<double>)a_ij) != 0 )
+					return false;
+			}
+		}
+
+		// If none of the elements have complex parts, its real:
 		return true;
 	}
 
@@ -158,25 +168,18 @@ namespace matrix
 	template <typename T>
 	bool Matrix<T>::isComplex()
 	{
-		// Iterate over all elements to see if any have non-zero complex parts:
-		for (const auto& row : matrix)
-		{
-			for (const auto& col : row)
-			{
-				const auto& a_ij = col;
-				if ( std::imag((std::complex<double>)a_ij) != 0 )
-					return true;
-			}
-		}
-
-		// If no non-zero complex parts were found, return false:
-		return false;
+		// If the matrix is strictly real, then we say it is 'not complex'. This is not true mathematically since C contains R but we aren't using that viewpoint:
+		return !(this->isReal());
 	}
 
 	// isSymmetric
 	template <typename T>
 	bool Matrix<T>::isSymmetric()
 	{
+		// If not square, can't be symmetric:
+		if ( ! this->isSquare() ) 
+			return false;
+
 		return true;
 	}
 
