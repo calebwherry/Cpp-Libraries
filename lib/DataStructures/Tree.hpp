@@ -29,20 +29,20 @@
 namespace tree
 {
 	// Tree Class:
-    class Tree {
+	class Tree {
 
-        protected:
-            // Default Constructor:
-            Tree();
+		protected:
+			// Default Constructor:
+      Tree();
 
-            // Deconstructor:
-            ~Tree();
+      // Deconstructor:
+      ~Tree();
     
-            // Pure virtual Print:
-            virtual void print() = 0;
+			// Pure virtual Print:
+      virtual void print() = 0;
 
-            // Tree Depth
-            int depth;
+      // Tree Depth
+      int depth;
 
     }; // Tree
 

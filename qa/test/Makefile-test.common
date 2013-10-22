@@ -16,16 +16,11 @@ include $(abspath ../../../Makefile.common)
 
 default: $(PROGS)
 
-LIBS += -lpthread -lgtest -lgtest_main
+LIBS += -lgtest -lgtest_main -lpthread
 
-OBJS = $(SRCS:%.cpp=%.o)
-
-$(PROGS): $(OBJS)
-	$(CXX) $(LDFLAGS) $< $(LIBS) -o $@
+$(PROGS): $(SRCS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LDFLAGS) $@.cpp $(LIBS) -o $@
 	@mv $@ $(BIN_DIR)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(PROGS) $(OBJS) $(GLOBAL_REMOVES)
