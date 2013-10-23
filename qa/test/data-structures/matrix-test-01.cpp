@@ -66,15 +66,18 @@ TEST_F(Matrix_Properties, Properties)
 														 e(4,4,complex<double>(1,0)); // No imaginary component
 
 	cout << "A: " << endl;
-	a.print();
+	a.print("\t");
 	cout << "B: " << endl;
-	b.print();
+	b.print("\t");
+	cout << "B transpose: " <<endl;
+	M::Matrix<double> temp = b.transpose();
+	temp.print();
 	cout << "C: " << endl;
-	c.print();
+	c.print("\t");
 	cout << "D: " << endl;
-	d.print();
+	d.print("\t");
 	cout << "E: " << endl;
-	e.print();
+	e.print("\t");
 
 	// A:
 	ASSERT_TRUE ( a.isSquare() );
