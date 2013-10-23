@@ -55,6 +55,9 @@ namespace matrix
 			// Custom constructors:
 			Matrix(uint32_t _numRows, uint32_t _numCols, const T& initVals = 0);
 
+			// Copy constructor:
+			// TODO
+			
       // Deconstructor:
       ~Matrix();
     
@@ -62,20 +65,21 @@ namespace matrix
       void print(const std::string& pad = emptyStr);
 
 			// Size Accessors:
-			uint32_t getNumRows() { return numRows; };
-			uint32_t getNumCols() { return numCols; };
+			uint32_t getNumRows() const { return numRows; };
+			uint32_t getNumCols() const { return numCols; };
 
 			// Operators:
 			// TODO matrix/matrix mult/add/sub
 			// TODO matrix/vector mult
 			// TODO matrix/scalar mult
 			T& operator()(const uint32_t& row, const uint32_t& col);
-			//const T& operator()(const uint32_t& row, const uint32_t& col) const;
+			const T& operator()(const uint32_t& row, const uint32_t& col) const;
+			//Matrix<T>& operator=(const Matrix<T>& rhs);
 			bool operator==(const Matrix<T>& rhs);
-			//bool operator~=(const Matrix<T>& rhs);
+			//bool operator~=(const Matrix<T>& rhs); // Roughly equal to within a tol? Maybe? Matlab has this opeartor which is neat, IMO. This might turn into a another method that takes a specific tol instead of just using an arbitrary defined on.
 
 			// Operations:
-			Matrix<T> transpose();
+			Matrix<T> transpose();	// Not in-place
 			//Matrix<T> conjugate();
 			//Matrix<T> complexConjugate();
 
@@ -109,6 +113,7 @@ namespace matrix
 				  numCols(0)
   {
 		// Resize matrix to 0:
+		//	Note: Probably not needed but... oh well.
 		matrix.resize(0);
   }
 
@@ -168,13 +173,20 @@ namespace matrix
 		return this->matrix[row][col];
 	}
 
+	// Operator () const
+	template <typename T>
+	const T& Matrix<T>::operator()(const uint32_t& row, const uint32_t& col) const
+	{
+		return this->matrix[row][col];
+	}
+
 	// Operator ==
 	template <typename T>
 	bool Matrix<T>::operator==(const Matrix<T>& rhs)
 	{
 		// If dimensions do not match, they are not equal:
-		if ( (this->getNumRows() != rhs.getNumRows()) || 
-		     (this->getNumCols() != rhs.getNumCols()) 
+		if ( (this->numRows != rhs.getNumRows()) || 
+		     (this->numCols != rhs.getNumCols()) 
 			 )
 		{
 			return false;
@@ -183,9 +195,9 @@ namespace matrix
 		// Unfortunately, using iterators doesn't work here since we have to access
 		//	both matrices at the same time. So we resort back to normal looping. Access
 		//	should not be a problem because of the check at the beginning of this routine:
-		for (uint32_t i=0; i < rhs.getNumRows(); ++i)
+		for (uint32_t i=0; i < this->numRows; ++i)
 		{
-			for (uint32_t j=0; j < rhs.getNumCols(); ++j)
+			for (uint32_t j=0; j < this->numCols; ++j)
 			{
 				if ( this->matrix[i][j] != rhs(i,j) )
 					return false;
@@ -206,17 +218,17 @@ namespace matrix
 		//	number of rows and cols.
 		if ( this->isSquare() )
 		{
-			matrixTranspose(numRows, numCols);
+			matrixTranspose = Matrix(numRows, numCols);
 		}
 		else
 		{
-			matrixTranspose(numCols, numRows);
+			matrixTranspose = Matrix(numCols, numRows);
 		}
 
 		// Loop through and swap elements:
-		//for (uint32_t i=0; i < numRows; ++i)
-		//	for (uint32_t j=0; j < numCols; ++j)
-		//		matrixTranspose(j,i) = this->matrix[i][j];
+		for (uint32_t i=0; i < numRows; ++i)
+			for (uint32_t j=0; j < numCols; ++j)
+				matrixTranspose(j,i) = this->matrix[i][j];
 
 		// Return tranposed matrix:
 		return matrixTranspose;
@@ -262,12 +274,12 @@ namespace matrix
 	template <typename T>
 	bool Matrix<T>::isSymmetric()
 	{
-		// If the matrix is not square, it can't be symmetric:
-		if ( ! this->isSquare() ) 
-			return false;
+		// If the matrix is equal to its transpose, its symmetric:
+		if ( *this == this->transpose() )
+			return true;
 
-		// Check 
-		return true;
+		// If transpose doesn't match, not symmetric:
+		return false;
 	}
 
 } // matrix namespace

@@ -69,9 +69,6 @@ TEST_F(Matrix_Properties, Properties)
 	a.print("\t");
 	cout << "B: " << endl;
 	b.print("\t");
-	cout << "B transpose: " <<endl;
-	M::Matrix<double> temp = b.transpose();
-	temp.print();
 	cout << "C: " << endl;
 	c.print("\t");
 	cout << "D: " << endl;
@@ -101,12 +98,12 @@ TEST_F(Matrix_Properties, Properties)
 	ASSERT_FALSE( d.isSquare() );
 	ASSERT_FALSE( d.isReal() );
 	ASSERT_TRUE ( d.isComplex() );
-	ASSERT_TRUE ( d.isSymmetric() );
+	ASSERT_FALSE( d.isSymmetric() );
 
 	// E:
 	ASSERT_TRUE ( e.isSquare() );
-	ASSERT_FALSE( e.isReal() );
-	ASSERT_TRUE ( e.isComplex() );
+	ASSERT_TRUE ( e.isReal() );
+	ASSERT_FALSE( e.isComplex() );
 	ASSERT_TRUE ( e.isSymmetric() );
 
 }
