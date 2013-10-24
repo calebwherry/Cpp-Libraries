@@ -49,6 +49,10 @@ namespace matrix
 
 		public:
 
+			//
+			// Constructors:
+			//
+
 			// Default Constructor:
       Matrix();
 
@@ -56,34 +60,75 @@ namespace matrix
 			Matrix(uint32_t _numRows, uint32_t _numCols, const T& initVals = 0);
 
 			// Copy constructor:
-			// TODO
+			//Matrix(const Matrix<T>& rhs);
 			
       // Deconstructor:
       ~Matrix();
-    
+
+
+			//
+			// Display:
+			//
+
 			// Print:
       void print(const std::string& pad = emptyStr);
+
+
+			//
+			// Accessors:
+			//
 
 			// Size Accessors:
 			uint32_t getNumRows() const { return numRows; };
 			uint32_t getNumCols() const { return numCols; };
 
+
+			//
 			// Operators:
-			// TODO matrix/matrix mult/add/sub
-			// TODO matrix/vector mult
-			// TODO matrix/scalar mult
+			//
+
+			// Matrix/Matrix:
+			//Matrix<T> operator*(const Matrix<T>& rhs);						// Matrix/Matrix Multiplication
+			//Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
+			//Matrix<T> operator-(const Matrix<T>& rhs);						// Matrix/Matrix Subtraction
+
+			// Matrix/Vector:
+			//std::vector<T> operator*(const std::vector<T>& rhs);	// Matrix/Vector Multiplication
+
+			// Matrix/Scalar:
+			//Matrix<T> operator*(const T& rhs);										// Matrix/Scalar Multiplication
+			//Matrix<T> operator/(const T& rhs);										// Matrix/Scalar Division
+			//Matrix<T> operator+(const T& rhs);										// Matrix/Scalar Addition
+			//Matrix<T> operator-(const T& rhs);										// Matrix/Scalar Subtraction
+
+			// Matrix (unitary):
+			//Matrix<T> operator-();																// Unitary Matrix Negative
+
+			// Element Access:
 			T& operator()(const uint32_t& row, const uint32_t& col);
 			const T& operator()(const uint32_t& row, const uint32_t& col) const;
+
+			// Assignment:
 			//Matrix<T>& operator=(const Matrix<T>& rhs);
+
+			// Comparison:
 			bool operator==(const Matrix<T>& rhs);
 			//bool operator~=(const Matrix<T>& rhs); // Roughly equal to within a tol? Maybe? Matlab has this opeartor which is neat, IMO. This might turn into a another method that takes a specific tol instead of just using an arbitrary defined on.
 
+
+			//
 			// Operations:
+			//
+
 			Matrix<T> transpose();	// Not in-place
 			//Matrix<T> conjugate();
 			//Matrix<T> complexConjugate();
 
+
+			//
 			// Properties:
+			//
+
 			bool isSquare();
 			bool isReal();
 			bool isComplex();
