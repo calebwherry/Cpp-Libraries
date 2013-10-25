@@ -87,6 +87,9 @@ namespace matrix
 			// Operators:
 			//
 
+			// Assignment:
+			Matrix<T>& operator=(const Matrix<T>& rhs);
+
 			// Matrix/Matrix:
 			//Matrix<T> operator*(const Matrix<T>& rhs);						// Matrix/Matrix Multiplication
 			//Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
@@ -96,10 +99,10 @@ namespace matrix
 			//std::vector<T> operator*(const std::vector<T>& rhs);	// Matrix/Vector Multiplication
 
 			// Matrix/Scalar:
-			//Matrix<T> operator*(const T& rhs);										// Matrix/Scalar Multiplication
-			//Matrix<T> operator/(const T& rhs);										// Matrix/Scalar Division
-			//Matrix<T> operator+(const T& rhs);										// Matrix/Scalar Addition
-			//Matrix<T> operator-(const T& rhs);										// Matrix/Scalar Subtraction
+			Matrix<T> operator*(const T& rhs);										// Matrix/Scalar Multiplication
+			Matrix<T> operator/(const T& rhs);										// Matrix/Scalar Division
+			Matrix<T> operator+(const T& rhs);										// Matrix/Scalar Addition
+			Matrix<T> operator-(const T& rhs);										// Matrix/Scalar Subtraction
 
 			// Matrix (unitary):
 			//Matrix<T> operator-();																// Unitary Matrix Negative
@@ -107,9 +110,6 @@ namespace matrix
 			// Element Access:
 			T& operator()(const uint32_t& row, const uint32_t& col);
 			const T& operator()(const uint32_t& row, const uint32_t& col) const;
-
-			// Assignment:
-			//Matrix<T>& operator=(const Matrix<T>& rhs);
 
 			// Comparison:
 			bool operator==(const Matrix<T>& rhs);
@@ -209,6 +209,117 @@ namespace matrix
 			// Newline between rows:
 			std::cout << std::endl;
 		}
+	}
+
+	// Operator =
+	template <typename T>
+	Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs)
+	{
+		// If rhs is already this matrix, no reason to continue:
+		if( this == &rhs )
+		{
+			return *this;
+		}
+
+		// Get rhs sizes and set them to class vars:
+		numRows = rhs.getNumRows();
+		numCols = rhs.getNumCols();
+
+		// Resize matrix to new size:
+		matrix.resize(numRows);
+		for (auto& cols : matrix)
+		{
+			cols.resize(numCols);
+		}
+
+		// Copy data from rhs to this matrix:
+		//	Note: As with '==', we can't use an iterator here because we are working on 2 objects, so we resort to normal looping.
+		for (uint32_t i=0; i<numRows; ++i)
+		{
+			for (uint32_t j=0; j<numCols; ++j)
+			{
+				matrix[i][j] = rhs(i,j);
+			}
+		}
+
+		// Return new, resized matrix:
+		return *this;
+	}
+
+	// Operator * (Matrix/Scalar)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator*(const T& rhs)
+	{
+		Matrix result(this->numRows, this->numCols);
+
+		// Iterate through matrix and multiply each element by scalar:
+		for (auto& row : matrix)
+		{
+			for (auto& col : row)
+			{
+				auto& a_ij = col;
+				a_ij = a_ij * rhs;
+			}
+		}
+
+		return result;
+	}
+
+	// Operator / (Matrix/Scalar)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator/(const T& rhs)
+	{
+		Matrix result(this->numRows, this->numCols);
+
+		// Iterate through matrix and divide each element by scalar:
+		for (auto& row : matrix)
+		{
+			for (auto& col : row)
+			{
+				auto& a_ij = col;
+				a_ij = a_ij / rhs;
+			}
+		}
+
+		return result;
+	}
+
+	// Operator + (Matrix/Scalar)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator+(const T& rhs)
+	{
+		Matrix result(this->numRows, this->numCols);
+
+		// Iterate through matrix and add each element by scalar:
+		for (auto& row : matrix)
+		{
+			for (auto& col : row)
+			{
+				auto& a_ij = col;
+				a_ij = a_ij + rhs;
+			}
+		}
+
+		return result;
+	}
+
+	// Operator - (Matrix/Scalar)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator-(const T& rhs)
+	{
+		Matrix result(this->numRows, this->numCols);
+
+		// Iterate through matrix and subtract each element by scalar:
+		for (auto& row : matrix)
+		{
+			for (auto& col : row)
+			{
+				auto& a_ij = col;
+				a_ij = a_ij - rhs;
+			}
+		}
+
+		return result;
 	}
 
 	// Operator ()
