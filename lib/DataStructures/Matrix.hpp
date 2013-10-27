@@ -24,6 +24,7 @@
 //
 
 // Compiler Include Dependencies:
+#include <exception>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -94,7 +95,7 @@ namespace matrix
 
 			// Matrix/Matrix:
 			//Matrix<T> operator*(const Matrix<T>& rhs);						// Matrix/Matrix Multiplication
-			//Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
+			Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
 			//Matrix<T> operator-(const Matrix<T>& rhs);						// Matrix/Matrix Subtraction
 
 			// Matrix/Vector:
@@ -259,6 +260,35 @@ namespace matrix
 		return *this;
 	}
 
+	// Operator + (Matrix/Matrix)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
+	{
+		/*
+		// If matrices aren't same size, can't add them:
+		if ( (this->numRows != rhs.getNumRows()) ||
+				 (this->numCols != rhs.getNumCols())
+			 )
+		{
+			throw;
+		}
+		*/
+
+		Matrix result(this->numRows, this->numCols);
+
+		// Loop through and add all elements:
+		for (uint32_t i=0; i<this->numRows; ++i)
+		{
+			for (uint32_t j=0; j<this->numCols; ++j)
+			{
+				result(i,j) = matrix[i][j] + rhs(i,j);
+			}
+		}
+
+		// Return 2 matrices added:
+		return result;
+	}
+
 	// Operator * (Matrix/Scalar)
 	template <typename T>
 	Matrix<T> Matrix<T>::operator*(const T& rhs)
@@ -271,7 +301,7 @@ namespace matrix
 			for (auto& col : row)
 			{
 				auto& a_ij = col;
-				a_ij = a_ij * rhs;
+				a_ij *= rhs;
 			}
 		}
 
@@ -290,7 +320,7 @@ namespace matrix
 			for (auto& col : row)
 			{
 				auto& a_ij = col;
-				a_ij = a_ij / rhs;
+				a_ij /= rhs;
 			}
 		}
 
@@ -309,7 +339,7 @@ namespace matrix
 			for (auto& col : row)
 			{
 				auto& a_ij = col;
-				a_ij = a_ij + rhs;
+				a_ij += rhs;
 			}
 		}
 
@@ -328,7 +358,7 @@ namespace matrix
 			for (auto& col : row)
 			{
 				auto& a_ij = col;
-				a_ij = a_ij - rhs;
+				a_ij -= rhs;
 			}
 		}
 
