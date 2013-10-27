@@ -1,4 +1,5 @@
-/////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
 //
 //  File:
 //      \file Matrix.hpp
@@ -9,7 +10,8 @@
 //  Author:
 //      \author J. Caleb Wherry
 //
-/////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
 
 // Include Guards:
 #ifndef MATRIX_H
@@ -56,12 +58,12 @@ namespace matrix
 			// Default Constructor:
       Matrix();
 
+			// Copy constructor:
+			Matrix(const Matrix<T>& rhs);
+
 			// Custom constructors:
 			Matrix(uint32_t _numRows, uint32_t _numCols, const T& initVals = 0);
 
-			// Copy constructor:
-			//Matrix(const Matrix<T>& rhs);
-			
       // Deconstructor:
       ~Matrix();
 
@@ -106,6 +108,7 @@ namespace matrix
 
 			// Matrix (unitary):
 			//Matrix<T> operator-();																// Unitary Matrix Negative
+			//Matrix<T> operator^(const int32_t& power);										// Power function, not sure how to abstract to beyond integers at the moment...
 
 			// Element Access:
 			T& operator()(const uint32_t& row, const uint32_t& col);
@@ -113,7 +116,7 @@ namespace matrix
 
 			// Comparison:
 			bool operator==(const Matrix<T>& rhs);
-			//bool operator~=(const Matrix<T>& rhs); // Roughly equal to within a tol? Maybe? Matlab has this opeartor which is neat, IMO. This might turn into a another method that takes a specific tol instead of just using an arbitrary defined on.
+			//bool operator~=(const Matrix<T>& rhs); // "Roughly equal to" (within a tolerance), MATLAB style.
 
 
 			//
@@ -161,6 +164,16 @@ namespace matrix
 		//	Note: Probably not needed but... oh well.
 		matrix.resize(0);
   }
+
+	// Copy constructor:
+	template <typename T>
+	Matrix<T>::Matrix(const Matrix<T>& rhs)
+	{
+		// Copy everything:
+		matrix = rhs.matrix;
+		numRows = rhs.getNumRows();
+		numCols = rhs.getNumCols();
+	}
 
 	// Custom constructor:
 	template <typename T>
