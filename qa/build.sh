@@ -113,7 +113,7 @@ else
 fi
 
 # All tests completed:
-echo "All test completed successfully!"
+echo "All tests completed successfully!"
 
 # Do some cleanup:
 cd ..
@@ -124,7 +124,7 @@ STOP_TIME=$(date +%s)
 
 # Elapsed time:
 echo
-echo "Test Build Execution Time: $(expr ${STOP_TIME} - ${START_TIME}) seconds."
+echo "Build Execution Time: $(expr ${STOP_TIME} - ${START_TIME}) seconds."
 echo
 
 # Exit cleanly:
