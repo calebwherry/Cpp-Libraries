@@ -63,7 +63,10 @@ namespace matrix
 			Matrix(const Matrix<T>& rhs);
 
 			// Custom constructors:
-			Matrix(uint32_t _numRows, uint32_t _numCols, const T& initVals = 0);
+			Matrix(uint32_t _numRows, 
+			       uint32_t _numCols, 
+						 const T& initVals = 0
+						);
 
       // Deconstructor:
       ~Matrix();
@@ -96,7 +99,7 @@ namespace matrix
 			// Matrix/Matrix:
 			//Matrix<T> operator*(const Matrix<T>& rhs);						// Matrix/Matrix Multiplication
 			Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
-			//Matrix<T> operator-(const Matrix<T>& rhs);						// Matrix/Matrix Subtraction
+			Matrix<T> operator-(const Matrix<T>& rhs);						// Matrix/Matrix Subtraction
 
 			// Matrix/Vector:
 			//std::vector<T> operator*(const std::vector<T>& rhs);	// Matrix/Vector Multiplication
@@ -108,8 +111,8 @@ namespace matrix
 			Matrix<T> operator-(const T& rhs);										// Matrix/Scalar Subtraction
 
 			// Matrix (unitary):
-			//Matrix<T> operator-();																// Unitary Matrix Negative
-			//Matrix<T> operator^(const int32_t& power);										// Power function, not sure how to abstract to beyond integers at the moment...
+			Matrix<T> operator-();																// Unitary Matrix Negative
+			Matrix<T> operator^(const int32_t& power);						// Power function, not sure how to abstract to beyond integers at the moment...
 
 			// Element Access:
 			T& operator()(const uint32_t& row, const uint32_t& col);
@@ -117,7 +120,6 @@ namespace matrix
 
 			// Comparison:
 			bool operator==(const Matrix<T>& rhs);
-			//bool operator~=(const Matrix<T>& rhs); // "Roughly equal to" (within a tolerance), MATLAB style.
 
 
 			//
@@ -136,18 +138,22 @@ namespace matrix
 			bool isSquare();
 			bool isReal();
 			bool isComplex();
-			bool isSymmetric();
-			//bool isSkewSymmetrix();
-			//bool isHermition();
-			//bool isUnitary();					// Complex Case nomenclature
-			//bool isNormal();
-			//bool isInvertible();
-			//bool isSingular();
-			//bool isOrthogonal();			// Real Case nomenclature
-			//bool isProjection();
-			//bool isDiagonal();
+			bool isSymmetric();					//  A = A^T
+			bool isSkewSymmetric();			// -A = A^T
+			//bool isHermition();					//  A = A^dagger (Complex extension of isSymmetric())
+			//bool isSkewHermition();			// -A = A^dagger (Complex extension of isSkewSymmetric())
+			//bool isSelfAdjoint();				// Same as isHermition()
+			//bool isNormal();						// Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
+			//bool isOrthogonal();				// A*A^T = A^T*A = I
+			//bool isUnitary();						// A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
+			//bool isInvertible();				// A*A^-1 = I
+			//bool isSingular();					// A has no inverse (det A = 0)
+			//bool isDegenerate();				// Same as isSingular()
+			//bool isProjection();				// A = A^2
+			//bool isInvolutory();				// A = A^-1 (A^2 = I)
+			//bool isDiagonal();					// A*I = A
 			//bool isTriDiagonal();
-			//bool isIdentity();
+			//bool isIdentity();					// A = I
 			//bool isTriangular();
 			//bool isLowerTriangular();
 			//bool isUpperTriangular();
@@ -247,7 +253,6 @@ namespace matrix
 		}
 
 		// Copy data from rhs to this matrix:
-		//	Note: As with '==', we can't use an iterator here because we are working on 2 objects, so we resort to normal looping.
 		for (uint32_t i=0; i<numRows; ++i)
 		{
 			for (uint32_t j=0; j<numCols; ++j)
@@ -289,19 +294,25 @@ namespace matrix
 		return result;
 	}
 
+	// Operator - (Matrix/Matrix)
+	template <typename T>
+	Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs)
+	{
+		return (*this + rhs*(-1));
+	}
+
 	// Operator * (Matrix/Scalar)
 	template <typename T>
 	Matrix<T> Matrix<T>::operator*(const T& rhs)
 	{
 		Matrix result(this->numRows, this->numCols);
 
-		// Iterate through matrix and multiply each element by scalar:
-		for (auto& row : matrix)
+		// Loop through matrix and multiply each element by scalar:
+		for (uint32_t i=0; i<numRows; ++i)
 		{
-			for (auto& col : row)
+			for (uint32_t j=0; j<numCols; ++j)
 			{
-				auto& a_ij = col;
-				a_ij *= rhs;
+				result(i,j) = matrix[i][j] * rhs;
 			}
 		}
 
@@ -314,13 +325,12 @@ namespace matrix
 	{
 		Matrix result(this->numRows, this->numCols);
 
-		// Iterate through matrix and divide each element by scalar:
-		for (auto& row : matrix)
+		// Loop through matrix and divide each element by scalar:
+		for (uint32_t i=0; i<numRows; ++i)
 		{
-			for (auto& col : row)
+			for (uint32_t j=0; j<numCols; ++j)
 			{
-				auto& a_ij = col;
-				a_ij /= rhs;
+				result(i,j) = matrix[i][j] / rhs;
 			}
 		}
 
@@ -333,13 +343,12 @@ namespace matrix
 	{
 		Matrix result(this->numRows, this->numCols);
 
-		// Iterate through matrix and add each element by scalar:
-		for (auto& row : matrix)
+		// Loop through matrix and add each element by scalar:
+		for (uint32_t i=0; i<numRows; ++i)
 		{
-			for (auto& col : row)
+			for (uint32_t j=0; j<numCols; ++j)
 			{
-				auto& a_ij = col;
-				a_ij += rhs;
+				result(i,j) = matrix[i][j] + rhs;
 			}
 		}
 
@@ -350,19 +359,14 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::operator-(const T& rhs)
 	{
-		Matrix result(this->numRows, this->numCols);
+		return ( (*this) + (-rhs) );
+	}
 
-		// Iterate through matrix and subtract each element by scalar:
-		for (auto& row : matrix)
-		{
-			for (auto& col : row)
-			{
-				auto& a_ij = col;
-				a_ij -= rhs;
-			}
-		}
-
-		return result;
+	// Operator - (Matrix [unitary])
+	template <typename T>
+	Matrix<T> Matrix<T>::operator-()
+	{
+		return ( (*this)*(-1) );
 	}
 
 	// Operator ()
@@ -383,6 +387,7 @@ namespace matrix
 	template <typename T>
 	bool Matrix<T>::operator==(const Matrix<T>& rhs)
 	{
+
 		// If dimensions do not match, they are not equal:
 		if ( (this->numRows != rhs.getNumRows()) || 
 		     (this->numCols != rhs.getNumCols()) 
@@ -391,9 +396,7 @@ namespace matrix
 			return false;
 		}
 
-		// Unfortunately, using iterators doesn't work here since we have to access
-		//	both matrices at the same time. So we resort back to normal looping. Access
-		//	should not be a problem because of the check at the beginning of this routine:
+		// Loop through and if any elements don't match, the matrices are not equal:
 		for (uint32_t i=0; i < this->numRows; ++i)
 		{
 			for (uint32_t j=0; j < this->numCols; ++j)
@@ -478,6 +481,18 @@ namespace matrix
 			return true;
 
 		// If transpose doesn't match, not symmetric:
+		return false;
+	}
+
+	// isSkewSymmetric
+	template <typename T>
+	bool Matrix<T>::isSkewSymmetric()
+	{
+		// If the negative of the matrix equals its transpose, its skew-symmetric:
+		if ( (*this)*(-1) == this->transpose() )
+			return true;
+
+		// If transpose doesn't match, not skew-symmetric:
 		return false;
 	}
 

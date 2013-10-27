@@ -31,15 +31,16 @@ using namespace std;
 namespace
 {
 
-// This doesn't currently work for some reason?
+// Matrix class test fixture:
 class MatrixTest : public ::testing::Test
 {
 	protected:
 
 		// Test Objects:
-		M::Matrix<double> a, b, b_transpose;
+		M::Matrix<double> a, b;
 		M::Matrix<complex<double>> c, d, e;
 
+		// Called before every test group:
 		virtual void SetUp() 
 		{
 			a = M::Matrix<double>(3, 3, 1.0);	// Square, Real
@@ -49,6 +50,7 @@ class MatrixTest : public ::testing::Test
 			e = M::Matrix<complex<double>>(4, 4, complex<double>(1,0)); // Not square, Real (no imag part)
 		}
 
+		// Called after every test group:
 		virtual void TearDown() {}
 };
 
