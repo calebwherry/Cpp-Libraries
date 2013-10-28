@@ -112,7 +112,7 @@ namespace matrix
 
 			// Matrix (unitary):
 			Matrix<T> operator-();																// Unitary Matrix Negative
-			Matrix<T> operator^(const int32_t& power);						// Power function, not sure how to abstract to beyond integers at the moment...
+			Matrix<T> operator^(const uint32_t& power);						// Power function, not sure how to abstract to beyond insigned integers at the moment...
 
 			// Element Access:
 			T& operator()(const uint32_t& row, const uint32_t& col);
@@ -367,6 +367,21 @@ namespace matrix
 	Matrix<T> Matrix<T>::operator-()
 	{
 		return ( (*this)*(-1) );
+	}
+
+	// Operator ^ (Matrix [unitary])
+	template <typename T>
+	Matrix<T> Matrix<T>::operator^(const uint32_t& rhs)
+	{
+		Matrix result(numRows, numCols, 0);
+		result = *this;
+
+		for (uint32_t i=0; i<rhs; ++i)
+		{
+			result *= (*this);
+		}
+
+		return result;
 	}
 
 	// Operator ()
