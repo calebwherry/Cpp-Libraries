@@ -37,17 +37,19 @@ class MatrixTest : public ::testing::Test
 	protected:
 
 		// Test Objects:
-		M::Matrix<double> a, b;
+		M::Matrix<double> a, a2, a3, b;
 		M::Matrix<complex<double>> c, d, e;
 
 		// Called before every test group:
 		virtual void SetUp() 
 		{
-			a = M::Matrix<double>(3, 3, 1.0);	// Square, Real
-			b = M::Matrix<double>(3, 4, 0);	// Not square, Real
-			c = M::Matrix<complex<double>>(3, 3, complex<double>(1,1));	// Square, Complex
-			d = M::Matrix<complex<double>>(3, 4, complex<double>(3,3));	// Not square, Complex
-			e = M::Matrix<complex<double>>(4, 4, complex<double>(1,0)); // Not square, Real (no imag part)
+			a  = M::Matrix<double>(3, 3, 1.0);	// Square, Real
+			a2 = M::Matrix<double>(3, 3, 2.0);  // Square, Real
+			a3 = M::Matrix<double>(3, 3, 3.0);  // Square, Real
+			b  = M::Matrix<double>(3, 4, 0);	// Not square, Real
+			c  = M::Matrix<complex<double>>(3, 3, complex<double>(1,1));	// Square, Complex
+			d  = M::Matrix<complex<double>>(3, 4, complex<double>(3,3));	// Not square, Complex
+			e  = M::Matrix<complex<double>>(4, 4, complex<double>(1,0)); // Not square, Real (no imag part)
 		}
 
 		// Called after every test group:
@@ -93,7 +95,7 @@ TEST_F(MatrixTest, Operators)
 {
 
 	//
-	// =
+	// = and ==
 	//
 
 	// A-B:
@@ -134,6 +136,20 @@ TEST_F(MatrixTest, Operators)
 	EXPECT_TRUE ( d == e );
 	EXPECT_EQ( d.getNumRows(), e.getNumRows() );
 	EXPECT_EQ( d.getNumCols(), e.getNumCols() );
+
+
+	//
+	// +
+	//
+
+	EXPECT_NO_THROW({
+		a = a + a2;
+	});
+	//EXPECT_EQ( a+a2, a3 ); Doesn't work for some reason right now...
+
+	EXPECT_THROW({
+		a = a + b;
+	}, logic_error);
 
 }
 

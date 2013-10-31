@@ -24,7 +24,7 @@
 //
 
 // Compiler Include Dependencies:
-#include <exception>
+#include <stdexcept>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -132,7 +132,7 @@ namespace matrix
 
 
 			//
-			// Properties:
+			// Boolean Properties:
 			//
 
 			bool isSquare();
@@ -157,6 +157,13 @@ namespace matrix
 			//bool isTriangular();
 			//bool isLowerTriangular();
 			//bool isUpperTriangular();
+
+			//
+			// Numerical Properties:
+			//
+
+			T trace();
+			//T determinant();
 
 	}; // Matrix
 
@@ -269,15 +276,14 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
 	{
-		/*
+
 		// If matrices aren't same size, can't add them:
 		if ( (this->numRows != rhs.getNumRows()) ||
 				 (this->numCols != rhs.getNumCols())
 			 )
 		{
-			throw;
+			throw std::logic_error("Matrices must be same size!");
 		}
-		*/
 
 		Matrix result(this->numRows, this->numCols);
 
@@ -373,12 +379,18 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::operator^(const uint32_t& rhs)
 	{
+		// The power function can only be applied to square matrices:
+		if ( !this->isSquare() )
+		{
+			throw std::logic_error("Matrix must be square!");
+		}
+
 		Matrix result(numRows, numCols, 0);
 		result = *this;
 
 		for (uint32_t i=0; i<rhs; ++i)
 		{
-			result *= (*this);
+			//result *= (*this); TODO: Implement *=
 		}
 
 		return result;
@@ -509,6 +521,20 @@ namespace matrix
 
 		// If transpose doesn't match, not skew-symmetric:
 		return false;
+	}
+
+	// Trace
+	template <typename T>
+	T Matrix<T>::trace()
+	{
+		// Sum of diagonal values:
+		T sum;
+
+		// Loop through the rows and sum the main diagonal
+		for (uint32_t i=0; i<numRows; ++i)
+			sum += matrix[i][i];
+		
+		return sum;
 	}
 
 } // matrix namespace
