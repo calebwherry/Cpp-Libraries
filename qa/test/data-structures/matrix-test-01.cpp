@@ -39,59 +39,56 @@ class MatrixTest : public ::testing::Test
 		// Test Objects:
 		M::Matrix<double> a, a2, a3, b;
 		M::Matrix<complex<double>> c, d, e;
+		string pad;
 
 		// Called before every test group:
 		virtual void SetUp() 
 		{
-			a  = M::Matrix<double>(3, 3, 1.0);	// Square, Real
-			a2 = M::Matrix<double>(3, 3, 2.0);  // Square, Real
-			a3 = M::Matrix<double>(3, 3, 3.0);  // Square, Real
-			b  = M::Matrix<double>(3, 4, 0);	// Not square, Real
-			c  = M::Matrix<complex<double>>(3, 3, complex<double>(1,1));	// Square, Complex
-			d  = M::Matrix<complex<double>>(3, 4, complex<double>(3,3));	// Not square, Complex
-			e  = M::Matrix<complex<double>>(4, 4, complex<double>(1,0)); // Not square, Real (no imag part)
+			pad = "\t";
+			a  = M::Matrix<double>(3, 3, 1.0, pad);	// Square, Real
+			a2 = M::Matrix<double>(3, 3, 2.0, pad);  // Square, Real
+			a3 = M::Matrix<double>(3, 3, 3.0, pad);  // Square, Real
+			b  = M::Matrix<double>(3, 4, 0, pad);	// Not square, Real
+			c  = M::Matrix<complex<double>>(3, 3, complex<double>(1,1), pad);	// Square, Complex
+			d  = M::Matrix<complex<double>>(3, 4, complex<double>(3,3), pad);	// Not square, Complex
+			e  = M::Matrix<complex<double>>(4, 4, complex<double>(1,0), pad); // Not square, Real (no imag part)
 		}
 
 		// Called after every test group:
 		virtual void TearDown() {}
 };
 
-TEST_F(MatrixTest, Print)
+TEST_F(MatrixTest, PrintOperator)
 {
 
 	// A:
-	cout << "A: " << endl;
 	EXPECT_NO_THROW({
-		a.print("\t");
+		cout << "A: " << endl << a << endl;
 	});
 
 	// B:
-	cout << "B: " << endl;
 	EXPECT_NO_THROW({
-		b.print("\t");
+		cout << "B: " << endl << b << endl;;
 	});
 
 	// C:
-	cout << "C: " << endl;
 	EXPECT_NO_THROW({
-		c.print("\t");
+		cout << "C: " << endl << c << endl;
 	});
 
 	// D:
-	cout << "D: " << endl;
 	EXPECT_NO_THROW({
-		d.print("\t");
+		cout << "D: " << endl << d << endl;
 	});
 
 	// E:
-	cout << "E: " << endl;
 	EXPECT_NO_THROW({
-		e.print("\t");
+		cout << "E: " << endl << e << endl;;
 	});
 	
 }
 
-TEST_F(MatrixTest, Operators)
+TEST_F(MatrixTest, OperatorEqual)
 {
 
 	//
@@ -108,7 +105,7 @@ TEST_F(MatrixTest, Operators)
 	EXPECT_EQ( a.getNumCols(), b.getNumCols() );
 
 	// B-C:
-	// Can't do right now because C is complex and B real. Assignment only works for matrices of same type.
+	// Can't do because C is complex and B real. Assignment only works for matrices of same type.
 	/*
 	EXPECT_FALSE( b == c );
 	EXPECT_EQ( b.getNumRows(), c.getNumRows() );
@@ -137,6 +134,10 @@ TEST_F(MatrixTest, Operators)
 	EXPECT_EQ( d.getNumRows(), e.getNumRows() );
 	EXPECT_EQ( d.getNumCols(), e.getNumCols() );
 
+}
+
+TEST_F(MatrixTest, OperatorPlus)
+{
 
 	//
 	// +
@@ -145,7 +146,7 @@ TEST_F(MatrixTest, Operators)
 	EXPECT_NO_THROW({
 		a = a + a2;
 	});
-	//EXPECT_EQ( a+a2, a3 ); Doesn't work for some reason right now...
+	EXPECT_TRUE( a == a3 );
 
 	EXPECT_THROW({
 		a = a + b;
