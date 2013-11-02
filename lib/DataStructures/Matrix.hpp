@@ -66,7 +66,7 @@ namespace matrix
 			// Copy constructor:
 			Matrix(const Matrix<T>& rhs);
 
-			// Custom constructors:
+			// Custom constructor:
 			Matrix(uint32_t _numRows, 
 			       uint32_t _numCols, 
 						 const T& initVals = 0,
@@ -84,7 +84,7 @@ namespace matrix
 			// Accessors/Modifiers::
 			//
 
-			// Matrix accessor:
+			// Matrix Accessor:
 			std::vector<std::vector<T>> getMatrix() const { return matrix; };
 	
 			// Size Accessors:
@@ -101,7 +101,7 @@ namespace matrix
 			//
 
 			// Display:
-			template <typename U>
+			template <typename U> // Not a member function but must be templated
 			friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& rhs);
 
 			// Assignment:
@@ -138,8 +138,9 @@ namespace matrix
 			//
 
 			Matrix<T> transpose();	// Not in-place
-			//Matrix<T> conjugate();
-			//Matrix<T> complexConjugate();
+			Matrix<T> complexConjugate();
+			Matrix<T> conjugateTranspose();
+			//Matrix<T> inverse();
 
 
 			//
@@ -151,18 +152,18 @@ namespace matrix
 			bool isComplex();
 			bool isSymmetric();					//  A = A^T
 			bool isSkewSymmetric();			// -A = A^T
-			//bool isHermition();					//  A = A^dagger (Complex extension of isSymmetric())
-			//bool isSkewHermition();			// -A = A^dagger (Complex extension of isSkewSymmetric())
-			//bool isSelfAdjoint();				// Same as isHermition()
+			bool isHermitian();					//  A = A^dagger (Complex extension of isSymmetric())
+			bool isSelfAdjoint();       // Same as isHermitian()
+			bool isSkewHermitian();			// -A = A^dagger (Complex extension of isSkewSymmetric())
 			//bool isNormal();						// Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
 			//bool isOrthogonal();				// A*A^T = A^T*A = I
 			//bool isUnitary();						// A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
 			//bool isInvertible();				// A*A^-1 = I
 			//bool isSingular();					// A has no inverse (det A = 0)
 			//bool isDegenerate();				// Same as isSingular()
-			//bool isProjection();				// A = A^2
+			bool isProjection();				// A = A^2
 			//bool isInvolutory();				// A = A^-1 (A^2 = I)
-			//bool isDiagonal();					// A*I = A
+			//bool isDiagonal();					//
 			//bool isTriDiagonal();
 			//bool isIdentity();					// A = I
 			//bool isTriangular();
@@ -174,14 +175,14 @@ namespace matrix
 			//
 
 			T trace();
-			//T sum();
+			T sum();
 			//T mean();
 			//T determinant();
 
 	}; // Matrix
 
 
-	// Default constructor:
+	// Default constructor
 	template <typename T>
   Matrix<T>::Matrix()
         : numRows(0),
@@ -193,7 +194,7 @@ namespace matrix
 		matrix.resize(0);
   }
 
-	// Copy constructor:
+	// Copy constructor
 	template <typename T>
 	Matrix<T>::Matrix(const Matrix<T>& rhs)
 	{
@@ -204,7 +205,7 @@ namespace matrix
 		pad = rhs.getPad();
 	}
 
-	// Custom constructor:
+	// Custom constructor
 	template <typename T>
 	Matrix<T>::Matrix(uint32_t _numRows, uint32_t _numCols, const T& initVal, const std::string& _pad)
 				: numRows(_numRows),
@@ -225,7 +226,7 @@ namespace matrix
 
 	}
 
-	// Initalizer_list constructor:
+	// Initalizer_list constructor
 	template <typename T>
 	Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> _matrix)
 				: pad("")
@@ -261,14 +262,14 @@ namespace matrix
 	
 	}
 
-	// Destructor:
+	// Destructor
 	template <typename T>
 	Matrix<T>::~Matrix()
 	{
 		// No dynamic allocation so nothing to do. 
 	}
 
-	// Operator <<:
+	// Operator <<
 	template <typename T>
 	std::ostream& operator<<(std::ostream& os, const Matrix<T>& rhs)
 	{
@@ -337,12 +338,12 @@ namespace matrix
 		// If lhs col count doesn match rhs's row count, can't multiply:
 		if ( this->numCols != rhs.getNumRows() )
 		{
-			throw std::logic_error("Matrices' inner dimensions do not match, can't multiply!");
+			throw std::logic_error("Matrix::operator* (Matrix/Matrix) - Matrices' inner dimensions do not match, can not multiply them!");
 		}
 
 		// New dimensions and matrix:
 		uint32_t rows = this->numRows,
-						 cols = rhs.getNumCols();;
+						 cols = rhs.getNumCols();
 		Matrix result(rows, cols);
 
 		// Multiply matrices together:
@@ -352,7 +353,7 @@ namespace matrix
 			{
 				for (uint32_t k=0; k<rows; ++k)
 				{
-					result(i,j) += this->matrix[i][j]*rhs(i,j);
+					result(i,j) += this->matrix[i][k] * rhs(k,j);
 				}
 			}
 		}
@@ -371,7 +372,7 @@ namespace matrix
 				 (this->numCols != rhs.getNumCols())
 			 )
 		{
-			throw std::logic_error("Matrices must be same size!");
+			throw std::logic_error("Matrix::operator+ (Matrix/Matrix) - Matrices must be the same size!");
 		}
 
 		Matrix result(this->numRows, this->numCols);
@@ -393,6 +394,15 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs)
 	{
+
+		// If matrices aren't same size, can't subtract them:
+		if ( (this->numRows != rhs.getNumRows()) ||
+				 (this->numCols != rhs.getNumCols())
+			 )
+		{
+			throw std::logic_error("Matrix::operator- (Matrix/Matrix) - Matrices must be the same size!");
+		}
+
 		return (*this + rhs*(-1));
 	}
 
@@ -403,9 +413,9 @@ namespace matrix
 		Matrix result(this->numRows, this->numCols);
 
 		// Loop through matrix and multiply each element by scalar:
-		for (uint32_t i=0; i<numRows; ++i)
+		for (uint32_t i=0; i< this->numRows; ++i)
 		{
-			for (uint32_t j=0; j<numCols; ++j)
+			for (uint32_t j=0; j< this->numCols; ++j)
 			{
 				result(i,j) = matrix[i][j] * rhs;
 			}
@@ -418,12 +428,18 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::operator/(const T& rhs)
 	{
+		// Check for division by zero:
+		if ( rhs == 0 )
+		{
+			throw std::logic_error("Matrix::operator/ (Matrix/Scalar) - Can't divide by zero!");
+		}
+
 		Matrix result(this->numRows, this->numCols);
 
 		// Loop through matrix and divide each element by scalar:
-		for (uint32_t i=0; i<numRows; ++i)
+		for (uint32_t i=0; i< this->numRows; ++i)
 		{
-			for (uint32_t j=0; j<numCols; ++j)
+			for (uint32_t j=0; j< this->numCols; ++j)
 			{
 				result(i,j) = matrix[i][j] / rhs;
 			}
@@ -439,9 +455,9 @@ namespace matrix
 		Matrix result(this->numRows, this->numCols);
 
 		// Loop through matrix and add each element by scalar:
-		for (uint32_t i=0; i<numRows; ++i)
+		for (uint32_t i=0; i< this->numRows; ++i)
 		{
-			for (uint32_t j=0; j<numCols; ++j)
+			for (uint32_t j=0; j< this->numCols; ++j)
 			{
 				result(i,j) = matrix[i][j] + rhs;
 			}
@@ -471,15 +487,15 @@ namespace matrix
 		// The power function can only be applied to square matrices:
 		if ( !this->isSquare() )
 		{
-			throw std::logic_error("Matrix must be square!");
+			throw std::logic_error("Matrix::operator^ - Matrix must be square!");
 		}
 
-		Matrix result(numRows, numCols, 0);
+		Matrix result(this->numRows, this->numCols, 0);
 		result = *this;
 
 		for (uint32_t i=0; i<rhs; ++i)
 		{
-			//result *= (*this); TODO: Implement *=
+			result = (*this) * (*this);
 		}
 
 		return result;
@@ -489,6 +505,14 @@ namespace matrix
 	template <typename T>
 	T& Matrix<T>::operator()(const uint32_t& row, const uint32_t& col)
 	{
+		// Check range:
+		if ( (row >= this->numRows) ||
+				 (col >= this->numCols)
+			 )
+		{
+			throw std::out_of_range("Matrix::operator() - Indices out of bounds!");
+		}
+
 		return this->matrix[row][col];
 	}
 
@@ -496,6 +520,14 @@ namespace matrix
 	template <typename T>
 	const T& Matrix<T>::operator()(const uint32_t& row, const uint32_t& col) const
 	{
+		// Check range:
+		if ( (row >= this->numRows) ||
+				 (col >= this->numCols)
+			 )
+		{
+			throw std::out_of_range("Matrix::operator() - Indices out of bounds!");
+		}
+
 		return this->matrix[row][col];
 	}
 
@@ -544,12 +576,58 @@ namespace matrix
 		}
 
 		// Loop through and swap elements:
-		for (uint32_t i=0; i < numRows; ++i)
-			for (uint32_t j=0; j < numCols; ++j)
+		for (uint32_t i=0; i < this->numRows; ++i)
+		{
+			for (uint32_t j=0; j < this->numCols; ++j)
+			{
 				matrixTranspose(j,i) = this->matrix[i][j];
+			}
+		}
 
 		// Return tranposed matrix:
 		return matrixTranspose;
+	}
+
+	// complexConjugate
+	template <typename T>
+	Matrix<T> Matrix<T>::complexConjugate()
+	{
+
+		// Check if real or not. If real, return it:
+		if ( this->isReal() )
+		{
+			return *this;
+		}
+
+		// New complex conjugate matrix:
+		Matrix matrixCC = *this;
+
+		// Iterate through and complex conjugate each element:
+		for (uint32_t i=0; i < this->numRows; ++i)
+		{
+			for (uint32_t j=0; j < this->numCols; ++j)
+			{
+				matrixCC(i,j) = std::conj(this->matrix[i][j]);
+			}
+		}
+
+		// Return the complex conjugate
+		return matrixCC;
+		
+	}
+
+	// conjugateTranspose
+	template <typename T>
+	Matrix<T> Matrix<T>::conjugateTranspose()
+	{
+		Matrix matrixCT = *this;
+
+		if ( matrixCT.isReal() )
+		{
+			return matrixCT.transpose();
+		}
+
+		return matrixCT.complexConjugate().transpose();
 	}
 
 	// isSquare
@@ -564,14 +642,16 @@ namespace matrix
 	bool Matrix<T>::isReal()
 	{
 		// Iterate over all elements to see if they all have non-zero complex parts:
-		for (const auto& row : matrix)
+		for (const auto& row : this->matrix)
 		{
 			for (const auto& col : row)
 			{
 				// If a complex part if found, the matrix is not real:
-				const auto& a_ij = col;
+				auto a_ij = col;
 				if ( std::imag((std::complex<double>)a_ij) != 0 )
+				{
 					return false;
+				}
 			}
 		}
 
@@ -594,7 +674,9 @@ namespace matrix
 	{
 		// If the matrix is equal to its transpose, its symmetric:
 		if ( *this == this->transpose() )
+		{
 			return true;
+		}
 
 		// If transpose doesn't match, not symmetric:
 		return false;
@@ -606,9 +688,69 @@ namespace matrix
 	{
 		// If the negative of the matrix equals its transpose, its skew-symmetric:
 		if ( (*this)*(-1) == this->transpose() )
+		{
 			return true;
+		}
 
 		// If transpose doesn't match, not skew-symmetric:
+		return false;
+	}
+
+	// isHermitian
+	template <typename T>
+	bool Matrix<T>::isHermitian()
+	{
+		// If the matrix is equal to its conjugate transpose, its Hermitian:
+		if ( *this == this->conjugateTranspose() )
+		{
+			return true;
+		}
+
+		// If the conjugate tranpose does not match, it is no Hermitian:
+		return false;
+	}
+
+	// isSelfAdjoint
+	template <typename T>
+	bool Matrix<T>::isSelfAdjoint()
+	{
+		return this->isHermitian();
+	}
+
+	// isSkewHermitian
+	template <typename T>
+	bool Matrix<T>::isSkewHermitian()
+	{
+
+		// If the negative of the matrix equals its conjugate transpose, its skew-hermitian:
+		if ( (*this)*(-1) == this->conjugateTranspose() )
+		{
+			return true;
+		}
+
+		// If conjugate transpose doesn't match, not skew-hermitian:
+		return false;
+	
+	}
+
+	// isProjection
+	template <typename T>
+	bool Matrix<T>::isProjection()
+	{
+
+		// Can't be a projection if not square:
+		if ( !this->isSquare() )
+		{
+			return false;
+		}
+
+		// If the matrix equals its square, it is a projection:
+		if ( (*this) == ((*this)^2) )
+		{
+			return true;
+		}
+
+		// If it doesn't equal its square, its not a projection:
 		return false;
 	}
 
@@ -617,12 +759,34 @@ namespace matrix
 	T Matrix<T>::trace()
 	{
 		// Sum of diagonal values:
-		T sum;
+		T diagSum = 0;
 
 		// Loop through the rows and sum the main diagonal
 		for (uint32_t i=0; i<numRows; ++i)
-			sum += matrix[i][i];
+		{
+			diagSum += this->matrix[i][i];
+		}
 		
+		return diagSum;
+	}
+
+	// Sum
+	template <typename T>
+	T Matrix<T>::sum()
+	{
+		// Sum of all elements in matrix:
+		T sum = 0;
+
+		// Loop through and sum all ements:
+		for (const auto& rows : this->matrix)
+		{
+			for (const auto& cols : rows)
+			{
+				auto a_ij = cols;
+				sum += a_ij;
+			}
+		}
+
 		return sum;
 	}
 
