@@ -31,28 +31,28 @@
 #include <complex>
 #include <initializer_list>
 
-// Matrix Namespace:
+/// matrix Namespace
 namespace matrix
 {
 
-	// Empty string used for default pad in matrix printing:
+	/// Empty string used for default pad in matrix printing
 	const std::string emptyStr = std::string();
 
-	// Matrix Class:
+	/// Matrix Class
 	template <typename T>
 	class Matrix
 	{
 		private:
 
-			// Main matrix variable:
-			std::vector<std::vector<T>> matrix;
+			// Matrix
+			std::vector<std::vector<T>> matrix;		///< Matrix
 
-			// Number of rows and cols:
-			uint32_t numRows;
-			uint32_t numCols;
+			// Size
+			uint32_t numRows;		///< Number of rows
+			uint32_t numCols;		///< Number of columns
 
-			// Pad for printing out matrix:
-			std::string pad;
+			// Printing Pad:
+			std::string pad;		///< Pad used when printing matrix
 
 		public:
 
@@ -60,76 +60,86 @@ namespace matrix
 			// Constructors:
 			//
 
-			// Default Constructor:
+			/// Default Constructor
       Matrix();
 
-			// Copy constructor:
-			Matrix(const Matrix<T>& rhs);
+			/// Copy Constructor
+			Matrix (
+				const Matrix<T>& rhs		///< Matrix to copy from.
+			);
 
-			// Custom constructor:
-			Matrix(uint32_t _numRows, 
-			       uint32_t _numCols, 
-						 const T& initVals = 0,
-						 const std::string& _pad = emptyStr
-						);
+			/// Custom Constructor
+			Matrix (
+				uint32_t _numRows,										///< Number of rows new matrix will have.
+			  uint32_t _numCols,										///< Number of columns new matrix will have.
+				const T& initVals = 0,								///< Initial value of all elements of new matrix.
+				const std::string& _pad = emptyStr		///< Printing pad.
+			);
 
-			// Initializer_list constructor:
-			Matrix(std::initializer_list<std::initializer_list<T>> _matrix);
+			/// Initializer_list Constructor
+			Matrix (
+				std::initializer_list<std::initializer_list<T>> _matrix		///< Initial values list.
+			);
 
-      // Deconstructor:
+      /// Deconstructor
       ~Matrix();
 
 
 			//
-			// Accessors/Modifiers::
+			// Accessors/Modifiers:
 			//
 
-			// Matrix Accessor:
+			/// Matrix Accessor
 			std::vector<std::vector<T>> getMatrix() const { return matrix; };
 	
-			// Size Accessors:
-			uint32_t getNumRows() const { return numRows; };
-			uint32_t getNumCols() const { return numCols; };
+			// Size Accessors
+			uint32_t getNumRows() const { return numRows; };		///< Row accessor
+			uint32_t getNumCols() const { return numCols; };		///< Columns accessor
 
-			// Pad Accessor/Modifier:
-			std::string getPad() const { return pad; };
-			void setPad(const std::string& _pad) { pad = _pad; };
+			// Pad Accessor/Modifier
+			std::string getPad() const { return pad; };							///< Pad accessor
+			void setPad(const std::string& _pad) { pad = _pad; };		///< Pad modifier
 
 
 			//
 			// Operators:
 			//
 
-			// Display:
-			template <typename U> // Not a member function but must be templated
-			friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& rhs);
+			/// Display
+			template <typename U>
+			friend std::ostream& operator<< (
+				std::ostream& os,									///< Output stream
+				const Matrix<T>& rhs							///< Matrix to output
+			);
 
-			// Assignment:
-			Matrix<T>& operator=(const Matrix<T>& rhs);
+			/// Assignment
+			Matrix<T>& operator= (
+				const Matrix<T>& rhs		///< Matrix to assign
+			);
 
-			// Matrix/Matrix:
-			Matrix<T> operator*(const Matrix<T>& rhs);						// Matrix/Matrix Multiplication
-			Matrix<T> operator+(const Matrix<T>& rhs);						// Matrix/Matrix Addition
-			Matrix<T> operator-(const Matrix<T>& rhs);						// Matrix/Matrix Subtraction
+			// Matrix/Matrix
+			Matrix<T> operator*(const Matrix<T>& rhs);						///< Matrix/Matrix Multiplication
+			Matrix<T> operator+(const Matrix<T>& rhs);						///< Matrix/Matrix Addition
+			Matrix<T> operator-(const Matrix<T>& rhs);						///< Matrix/Matrix Subtraction
 
-			// Matrix/Vector:
-			//std::vector<T> operator*(const std::vector<T>& rhs);	// Matrix/Vector Multiplication
+			// Matrix/Vector
+			//std::vector<T> operator*(const std::vector<T>& rhs);	///< Matrix/Vector Multiplication
 
-			// Matrix/Scalar:
-			Matrix<T> operator*(const T& rhs);										// Matrix/Scalar Multiplication
-			Matrix<T> operator/(const T& rhs);										// Matrix/Scalar Division
-			Matrix<T> operator+(const T& rhs);										// Matrix/Scalar Addition
-			Matrix<T> operator-(const T& rhs);										// Matrix/Scalar Subtraction
+			// Matrix/Scalar
+			Matrix<T> operator*(const T& rhs);										///< Matrix/Scalar Multiplication
+			Matrix<T> operator/(const T& rhs);										///< Matrix/Scalar Division
+			Matrix<T> operator+(const T& rhs);										///< Matrix/Scalar Addition
+			Matrix<T> operator-(const T& rhs);										///< Matrix/Scalar Subtraction
 
-			// Matrix (unitary):
-			Matrix<T> operator-();																// Matrix Negative
-			Matrix<T> operator^(const uint32_t& power);						// Power function
+			/// Matrix (unitary)
+			Matrix<T> operator-();																///< Matrix Negative
+			Matrix<T> operator^(const uint32_t& power);						///< Power function
 
-			// Element Access:
+			/// Element Access
 			T& operator()(const uint32_t& row, const uint32_t& col);
 			const T& operator()(const uint32_t& row, const uint32_t& col) const;
 
-			// Comparison:
+			/// Comparison
 			bool operator==(const Matrix<T>& rhs);
 
 
@@ -147,25 +157,25 @@ namespace matrix
 			// Boolean Properties:
 			//
 
-			bool isSquare();
-			bool isReal();
-			bool isComplex();
-			bool isSymmetric();					//  A = A^T
-			bool isSkewSymmetric();			// -A = A^T
-			bool isHermitian();					//  A = A^dagger (Complex extension of isSymmetric())
-			bool isSelfAdjoint();       // Same as isHermitian()
-			bool isSkewHermitian();			// -A = A^dagger (Complex extension of isSkewSymmetric())
-			//bool isNormal();						// Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
-			//bool isOrthogonal();				// A*A^T = A^T*A = I
-			//bool isUnitary();						// A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
-			//bool isInvertible();				// A*A^-1 = I
-			//bool isSingular();					// A has no inverse (det A = 0)
-			//bool isDegenerate();				// Same as isSingular()
-			bool isProjection();				// A = A^2
-			//bool isInvolutory();				// A = A^-1 (A^2 = I)
-			//bool isDiagonal();					//
+			bool isSquare();						///< Is matrix square?
+			bool isReal();							///< Are all elements real?
+			bool isComplex();						///< Do any elements have imaginary parts?
+			bool isSymmetric();					///<  A = A^T ?
+			bool isSkewSymmetric();			///< -A = A^T ?
+			bool isHermitian();					///<  A = A^dagger (Complex extension of isSymmetric()) ?
+			bool isSelfAdjoint();       ///<  Same as isHermitian() 
+			bool isSkewHermitian();			///< -A = A^dagger (Complex extension of isSkewSymmetric())
+			//bool isNormal();						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
+			//bool isOrthogonal();				///< A*A^T = A^T*A = I
+			//bool isUnitary();						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
+			//bool isInvertible();				///< A*A^-1 = I
+			//bool isSingular();					///< A has no inverse (det A = 0)
+			//bool isDegenerate();				///< Same as isSingular()
+			bool isProjection();				///< A = A^2
+			//bool isInvolutory();				///< A = A^-1 (A^2 = I)
+			//bool isDiagonal();					///< Are all elemnets zero except those on diagonal?
 			//bool isTriDiagonal();
-			//bool isIdentity();					// A = I
+			//bool isIdentity();					///< A = I
 			//bool isTriangular();
 			//bool isLowerTriangular();
 			//bool isUpperTriangular();
@@ -174,8 +184,8 @@ namespace matrix
 			// Numerical Properties:
 			//
 
-			T trace();
-			T sum();
+			T trace();									///< Sum of diagonal elements
+			T sum();										///< Sum of all elements
 			//T mean();
 			//T determinant();
 

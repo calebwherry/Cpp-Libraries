@@ -64,13 +64,13 @@ namespace binaryTree
             /// Insert item
             void insert(T givenData);
 
-            /// Insert item at node:
+            /// Insert item at node
             void insert(T givenData, Node<T>* givenNode);
 
             /// Remove item
             void remove(T givenData);
 
-            /// Remove item at node:
+            /// Remove item at node
             void remove(T givenData, Node<T>* givenNode);
 
             /// preOrderTravesal from the root node

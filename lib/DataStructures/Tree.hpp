@@ -25,31 +25,32 @@
 #include <cstdlib>
 #include <iostream>
 
-// Namespace:
+/// Namespace:
 namespace tree
 {
-	// Tree Class:
+	/// Tree Class:
 	class Tree {
 
 		protected:
-			// Default Constructor:
+
+			/// Default Constructor:
       Tree();
 
-      // Deconstructor:
+      /// Deconstructor:
       ~Tree();
     
-			// Pure virtual Print:
+			/// Pure virtual Print:
       virtual void print() = 0;
 
-      // Tree Depth
+      /// Tree Depth
       int depth;
 
-    }; // Tree
+	}; // Tree
 
-    Tree::Tree()
-        : depth(0)
-    {
-    }
+	Tree::Tree()
+			: depth(0)
+	{
+	}
 
 	Tree::~Tree()
 	{

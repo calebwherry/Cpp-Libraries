@@ -18,6 +18,8 @@ default: $(PROGS)
 
 LIBS += -lgtest -lgtest_main -lpthread
 
+CXXFLAGS += -Wno-unused-variable
+
 $(PROGS): $(SRCS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LDFLAGS) $@.cpp $(LIBS) -o $@
 	@mv $@ $(BIN_DIR)
