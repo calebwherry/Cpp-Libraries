@@ -238,7 +238,7 @@ TEST_F(MatrixTest, Properties_Numerical)
 }
 
 
-TEST_F(MatrixTest, Properties_Bool)
+TEST_F(MatrixTest, Properties_Boolean)
 {
 
 	EXPECT_TRUE ( I3.isSquare() );
@@ -249,6 +249,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_TRUE ( I3.isHermitian() );
 	EXPECT_FALSE( I3.isSkewHermitian() );
 	EXPECT_TRUE ( I3.isProjection() );
+	EXPECT_TRUE ( I3.commutesWith(I3) );
 
 	EXPECT_TRUE ( real_1.isSquare() );
 	EXPECT_TRUE ( real_1.isReal() );
@@ -258,6 +259,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_TRUE ( real_1.isHermitian() );
 	EXPECT_FALSE( real_1.isSkewHermitian() );
 	EXPECT_FALSE( real_1.isProjection() );
+	EXPECT_TRUE ( real_1.commutesWith(real_1) );
 
 	EXPECT_FALSE( real_2.isSquare() );
 	EXPECT_TRUE ( real_2.isReal() );
@@ -267,6 +269,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_FALSE( real_2.isHermitian() );
 	EXPECT_FALSE( real_2.isSkewHermitian() );
 	EXPECT_FALSE( real_2.isProjection() );
+	EXPECT_FALSE( real_2.commutesWith(real_2) );
 
 	EXPECT_TRUE ( complex_1.isSquare() );
 	EXPECT_FALSE( complex_1.isReal() );
@@ -276,6 +279,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_FALSE( complex_1.isHermitian() );
 	EXPECT_FALSE( complex_1.isSkewHermitian() );
 	EXPECT_FALSE( complex_1.isProjection() );
+	EXPECT_TRUE ( complex_1.commutesWith(complex_1) );
 
 	EXPECT_FALSE( complex_2.isSquare() );
 	EXPECT_FALSE( complex_2.isReal() );
@@ -285,6 +289,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_FALSE( complex_2.isHermitian() );
 	EXPECT_FALSE( complex_2.isSkewHermitian() );
 	EXPECT_FALSE( complex_2.isProjection() );
+	EXPECT_FALSE( complex_2.commutesWith(complex_2) );
 
 	EXPECT_TRUE ( complex_3.isSquare() );
 	EXPECT_TRUE ( complex_3.isReal() );
@@ -294,6 +299,7 @@ TEST_F(MatrixTest, Properties_Bool)
 	EXPECT_TRUE ( complex_3.isHermitian() );
 	EXPECT_FALSE( complex_3.isSkewHermitian() );
 	EXPECT_FALSE( complex_3.isProjection() );
+	EXPECT_TRUE ( complex_3.commutesWith(complex_3) );
 
 }
 

@@ -118,76 +118,77 @@ namespace matrix
 			);
 
 			// Matrix/Matrix
-			Matrix<T> operator*(const Matrix<T>& rhs);						///< Matrix/Matrix Multiplication
-			Matrix<T> operator+(const Matrix<T>& rhs);						///< Matrix/Matrix Addition
-			Matrix<T> operator-(const Matrix<T>& rhs);						///< Matrix/Matrix Subtraction
+			Matrix<T> operator*(const Matrix<T>& rhs) const;			///< Matrix/Matrix Multiplication
+			Matrix<T> operator+(const Matrix<T>& rhs) const;			///< Matrix/Matrix Addition
+			Matrix<T> operator-(const Matrix<T>& rhs) const;			///< Matrix/Matrix Subtraction
 
 			// Matrix/Vector
-			//std::vector<T> operator*(const std::vector<T>& rhs);	///< Matrix/Vector Multiplication
+			//std::vector<T> operator*(const std::vector<T>& rhs) const;	///< Matrix/Vector Multiplication
 
 			// Matrix/Scalar
-			Matrix<T> operator*(const T& rhs);										///< Matrix/Scalar Multiplication
-			Matrix<T> operator/(const T& rhs);										///< Matrix/Scalar Division
-			Matrix<T> operator+(const T& rhs);										///< Matrix/Scalar Addition
-			Matrix<T> operator-(const T& rhs);										///< Matrix/Scalar Subtraction
+			Matrix<T> operator*(const T& rhs) const;							///< Matrix/Scalar Multiplication
+			Matrix<T> operator/(const T& rhs) const;							///< Matrix/Scalar Division
+			Matrix<T> operator+(const T& rhs) const;							///< Matrix/Scalar Addition
+			Matrix<T> operator-(const T& rhs) const;							///< Matrix/Scalar Subtraction
 
 			/// Matrix (unitary)
-			Matrix<T> operator-();																///< Matrix Negative
-			Matrix<T> operator^(const uint32_t& power);						///< Power function
+			Matrix<T> operator-() const;													///< Matrix Negative
+			Matrix<T> operator^(const uint32_t& power) const;			///< Power function
 
 			/// Element Access
 			T& operator()(const uint32_t& row, const uint32_t& col);
 			const T& operator()(const uint32_t& row, const uint32_t& col) const;
 
 			/// Comparison
-			bool operator==(const Matrix<T>& rhs);
+			bool operator==(const Matrix<T>& rhs) const;
 
 
 			//
 			// Operations:
 			//
 
-			Matrix<T> transpose();	// Not in-place
-			Matrix<T> complexConjugate();
-			Matrix<T> conjugateTranspose();
-			//Matrix<T> inverse();
+			Matrix<T> transpose() const;			// Not in-place
+			Matrix<T> complexConjugate() const;
+			Matrix<T> conjugateTranspose() const;
+			//Matrix<T> inverse() const;
 
 
 			//
 			// Boolean Properties:
 			//
 
-			bool isSquare();						///< Is matrix square?
-			bool isReal();							///< Are all elements real?
-			bool isComplex();						///< Do any elements have imaginary parts?
-			bool isSymmetric();					///<  A = A^T ?
-			bool isSkewSymmetric();			///< -A = A^T ?
-			bool isHermitian();					///<  A = A^dagger (Complex extension of isSymmetric()) ?
-			bool isSelfAdjoint();       ///<  Same as isHermitian() 
-			bool isSkewHermitian();			///< -A = A^dagger (Complex extension of isSkewSymmetric())
-			//bool isNormal();						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
-			//bool isOrthogonal();				///< A*A^T = A^T*A = I
-			//bool isUnitary();						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
-			//bool isInvertible();				///< A*A^-1 = I
-			//bool isSingular();					///< A has no inverse (det A = 0)
-			//bool isDegenerate();				///< Same as isSingular()
-			bool isProjection();				///< A = A^2
-			//bool isInvolutory();				///< A = A^-1 (A^2 = I)
-			//bool isDiagonal();					///< Are all elemnets zero except those on diagonal?
-			//bool isTriDiagonal();
-			//bool isIdentity();					///< A = I
-			//bool isTriangular();
-			//bool isLowerTriangular();
-			//bool isUpperTriangular();
+			bool isSquare() const;						///< Is matrix square?
+			bool isReal() const;							///< Are all elements real?
+			bool isComplex() const;						///< Do any elements have imaginary parts?
+			bool isSymmetric() const;					///<  A = A^T ?
+			bool isSkewSymmetric() const;			///< -A = A^T ?
+			bool isHermitian() const;					///<  A = A^dagger (Complex extension of isSymmetric()) ?
+			bool isSelfAdjoint() const;       ///<  Same as isHermitian() 
+			bool isSkewHermitian() const;			///< -A = A^dagger (Complex extension of isSkewSymmetric())
+			//bool isNormal() const;						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
+			//bool isOrthogonal() const;				///< A*A^T = A^T*A = I
+			//bool isUnitary() const;						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
+			//bool isInvertible() const;				///< A*A^-1 = I
+			//bool isSingular() const;					///< A has no inverse (det A = 0)
+			//bool isDegenerate() const;				///< Same as isSingular()
+			bool isProjection() const;				///< A = A^2
+			//bool isInvolutory() const;				///< A = A^-1 (A^2 = I)
+			//bool isDiagonal() const;					///< Are all elemnets zero except those on diagonal?
+			//bool isTriDiagonal() const;
+			//bool isIdentity() const;					///< A = I
+			//bool isTriangular() const;
+			//bool isLowerTriangular() const;
+			//bool isUpperTriangular() const;
+			bool commutesWith(const Matrix<T>& rhs) const;
 
 			//
 			// Numerical Properties:
 			//
 
-			T trace();									///< Sum of diagonal elements
-			T sum();										///< Sum of all elements
-			//T mean();
-			//T determinant();
+			T trace() const;									///< Sum of diagonal elements
+			T sum() const;										///< Sum of all elements
+			//T mean() const;
+			//T determinant() const;
 
 	}; // Matrix
 
@@ -342,7 +343,7 @@ namespace matrix
 
 	// Operator * (Matrix/Matrix)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs)
+	Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs) const
 	{
 
 		// If lhs col count doesn match rhs's row count, can't multiply:
@@ -374,7 +375,7 @@ namespace matrix
 
 	// Operator + (Matrix/Matrix)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
+	Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs) const
 	{
 
 		// If matrices aren't same size, can't add them:
@@ -402,7 +403,7 @@ namespace matrix
 
 	// Operator - (Matrix/Matrix)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs)
+	Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs) const
 	{
 
 		// If matrices aren't same size, can't subtract them:
@@ -418,7 +419,7 @@ namespace matrix
 
 	// Operator * (Matrix/Scalar)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator*(const T& rhs)
+	Matrix<T> Matrix<T>::operator*(const T& rhs) const
 	{
 		Matrix result(this->numRows, this->numCols);
 
@@ -436,7 +437,7 @@ namespace matrix
 
 	// Operator / (Matrix/Scalar)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator/(const T& rhs)
+	Matrix<T> Matrix<T>::operator/(const T& rhs) const
 	{
 		// Check for division by zero:
 		if ( rhs == 0 )
@@ -460,7 +461,7 @@ namespace matrix
 
 	// Operator + (Matrix/Scalar)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator+(const T& rhs)
+	Matrix<T> Matrix<T>::operator+(const T& rhs) const
 	{
 		Matrix result(this->numRows, this->numCols);
 
@@ -478,21 +479,21 @@ namespace matrix
 
 	// Operator - (Matrix/Scalar)
 	template <typename T>
-	Matrix<T> Matrix<T>::operator-(const T& rhs)
+	Matrix<T> Matrix<T>::operator-(const T& rhs) const
 	{
 		return ( (*this) + (-rhs) );
 	}
 
 	// Operator - (Matrix [unitary])
 	template <typename T>
-	Matrix<T> Matrix<T>::operator-()
+	Matrix<T> Matrix<T>::operator-() const
 	{
 		return ( (*this)*(-1) );
 	}
 
 	// Operator ^ (Matrix [unitary])
 	template <typename T>
-	Matrix<T> Matrix<T>::operator^(const uint32_t& rhs)
+	Matrix<T> Matrix<T>::operator^(const uint32_t& rhs) const
 	{
 		// The power function can only be applied to square matrices:
 		if ( !this->isSquare() )
@@ -543,7 +544,7 @@ namespace matrix
 
 	// Operator ==
 	template <typename T>
-	bool Matrix<T>::operator==(const Matrix<T>& rhs)
+	bool Matrix<T>::operator==(const Matrix<T>& rhs) const
 	{
 
 		// If dimensions do not match, they are not equal:
@@ -570,7 +571,7 @@ namespace matrix
 
 	// transpose
 	template <typename T>
-	Matrix<T> Matrix<T>::transpose()
+	Matrix<T> Matrix<T>::transpose() const
 	{
 		Matrix matrixTranspose;
 
@@ -600,7 +601,7 @@ namespace matrix
 
 	// complexConjugate
 	template <typename T>
-	Matrix<T> Matrix<T>::complexConjugate()
+	Matrix<T> Matrix<T>::complexConjugate() const
 	{
 
 		// Check if real or not. If real, return it:
@@ -628,7 +629,7 @@ namespace matrix
 
 	// conjugateTranspose
 	template <typename T>
-	Matrix<T> Matrix<T>::conjugateTranspose()
+	Matrix<T> Matrix<T>::conjugateTranspose() const
 	{
 		Matrix matrixCT = *this;
 
@@ -642,14 +643,14 @@ namespace matrix
 
 	// isSquare
 	template <typename T>
-	bool Matrix<T>::isSquare()
+	bool Matrix<T>::isSquare() const
 	{
 		return (numRows == numCols) ? true : false;
 	}
 
 	// isReal
 	template <typename T>
-	bool Matrix<T>::isReal()
+	bool Matrix<T>::isReal() const
 	{
 		// Iterate over all elements to see if they all have non-zero complex parts:
 		for (const auto& row : this->matrix)
@@ -671,7 +672,7 @@ namespace matrix
 
 	// isComplex
 	template <typename T>
-	bool Matrix<T>::isComplex()
+	bool Matrix<T>::isComplex() const
 	{
 		// If the matrix is strictly real, then we say it is 'not complex'.
 		//	To be complex, there has to be at least one element that has an imag part.
@@ -680,7 +681,7 @@ namespace matrix
 
 	// isSymmetric
 	template <typename T>
-	bool Matrix<T>::isSymmetric()
+	bool Matrix<T>::isSymmetric() const
 	{
 		// If the matrix is equal to its transpose, its symmetric:
 		if ( *this == this->transpose() )
@@ -694,7 +695,7 @@ namespace matrix
 
 	// isSkewSymmetric
 	template <typename T>
-	bool Matrix<T>::isSkewSymmetric()
+	bool Matrix<T>::isSkewSymmetric() const
 	{
 		// If the negative of the matrix equals its transpose, its skew-symmetric:
 		if ( (*this)*(-1) == this->transpose() )
@@ -708,7 +709,7 @@ namespace matrix
 
 	// isHermitian
 	template <typename T>
-	bool Matrix<T>::isHermitian()
+	bool Matrix<T>::isHermitian() const
 	{
 		// If the matrix is equal to its conjugate transpose, its Hermitian:
 		if ( *this == this->conjugateTranspose() )
@@ -722,14 +723,14 @@ namespace matrix
 
 	// isSelfAdjoint
 	template <typename T>
-	bool Matrix<T>::isSelfAdjoint()
+	bool Matrix<T>::isSelfAdjoint() const
 	{
 		return this->isHermitian();
 	}
 
 	// isSkewHermitian
 	template <typename T>
-	bool Matrix<T>::isSkewHermitian()
+	bool Matrix<T>::isSkewHermitian() const
 	{
 
 		// If the negative of the matrix equals its conjugate transpose, its skew-hermitian:
@@ -745,7 +746,7 @@ namespace matrix
 
 	// isProjection
 	template <typename T>
-	bool Matrix<T>::isProjection()
+	bool Matrix<T>::isProjection() const
 	{
 
 		// Can't be a projection if not square:
@@ -764,9 +765,31 @@ namespace matrix
 		return false;
 	}
 
+	// commutesWith
+	template <typename T>
+	bool Matrix<T>::commutesWith(const Matrix<T>& rhs) const
+	{
+		// If inner dimensions don't match either way, can't multiply:
+		if ( (this->getNumCols() != rhs.getNumRows()) ||
+				 (this->getNumRows() != rhs.getNumCols())
+			 )
+		{
+			return false;
+		}
+
+		// 2 matricies commute if AB = BA:
+		if ( ((*this)*(rhs)) == ((rhs)*(*this)) )
+		{
+			return true;
+		}
+
+		// If they aren't equal, don't commute:
+		return false;
+	}
+
 	// Trace
 	template <typename T>
-	T Matrix<T>::trace()
+	T Matrix<T>::trace() const
 	{
 		// Sum of diagonal values:
 		T diagSum = 0;
@@ -782,7 +805,7 @@ namespace matrix
 
 	// Sum
 	template <typename T>
-	T Matrix<T>::sum()
+	T Matrix<T>::sum() const
 	{
 		// Sum of all elements in matrix:
 		T sum = 0;
