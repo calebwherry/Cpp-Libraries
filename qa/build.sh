@@ -22,7 +22,7 @@ PROJ="Cpp-Libraries"
 FULL_PROJ="calebwherry/${PROJ}"
 
 # Get time stamp:
-TIMESTAMP="`date +\"%d-%m-%Y_%T\"`"
+TIMESTAMP="`date +\"%Y-%m-%d_%T\"`"
 
 # Build directory name:
 BUILD_DIR="build_${TIMESTAMP}"
