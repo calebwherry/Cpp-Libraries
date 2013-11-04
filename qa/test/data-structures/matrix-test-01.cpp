@@ -61,6 +61,7 @@ class MatrixTest : public ::testing::Test
 			real_1b = M::Matrix<double>(3, 3, 2.0, pad);
 			real_1c = M::Matrix<double>(3, 3, 3.0, pad);
 			real_2  = M::Matrix<double>(3, 4, 0, pad);
+			real_3  = M::Matrix<double>(4, 4, 0, pad);
 			complex_1  = M::Matrix<complex<double>>(3, 3, complex<double>(1,1), pad);
 			complex_2  = M::Matrix<complex<double>>(3, 4, complex<double>(3,3), pad);
 			complex_3  = M::Matrix<complex<double>>(4, 4, complex<double>(1,0), pad);
@@ -80,7 +81,7 @@ TEST_F(MatrixTest, OperatorDisplay)
 	});
 
 	EXPECT_NO_THROW({
-		cout << "Identity 4x4: " << endl << M::makeIdentity<uint32_t>(4, "\t") << endl;
+		cout << "Identity 4x4: " << endl << real_3.identity() << endl;
 	});
 
 	EXPECT_NO_THROW({
@@ -252,6 +253,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( I3.isSkewSymmetric() );
 	EXPECT_TRUE ( I3.isHermitian() );
 	EXPECT_FALSE( I3.isSkewHermitian() );
+	EXPECT_TRUE ( I3.isOrthogonal() );
 	EXPECT_TRUE ( I3.isProjection() );
 	EXPECT_TRUE ( I3.commutesWith(I3) );
 
@@ -262,6 +264,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( real_1.isSkewSymmetric() );
 	EXPECT_TRUE ( real_1.isHermitian() );
 	EXPECT_FALSE( real_1.isSkewHermitian() );
+	EXPECT_FALSE( real_1.isOrthogonal() );
 	EXPECT_FALSE( real_1.isProjection() );
 	EXPECT_TRUE ( real_1.commutesWith(real_1) );
 
@@ -272,6 +275,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( real_2.isSkewSymmetric() );
 	EXPECT_FALSE( real_2.isHermitian() );
 	EXPECT_FALSE( real_2.isSkewHermitian() );
+	EXPECT_FALSE( real_2.isOrthogonal() );
 	EXPECT_FALSE( real_2.isProjection() );
 	EXPECT_FALSE( real_2.commutesWith(real_2) );
 
@@ -282,6 +286,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( complex_1.isSkewSymmetric() );
 	EXPECT_FALSE( complex_1.isHermitian() );
 	EXPECT_FALSE( complex_1.isSkewHermitian() );
+	EXPECT_FALSE( complex_1.isOrthogonal() );
 	EXPECT_FALSE( complex_1.isProjection() );
 	EXPECT_TRUE ( complex_1.commutesWith(complex_1) );
 
@@ -292,6 +297,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( complex_2.isSkewSymmetric() );
 	EXPECT_FALSE( complex_2.isHermitian() );
 	EXPECT_FALSE( complex_2.isSkewHermitian() );
+	EXPECT_FALSE( complex_2.isOrthogonal() );
 	EXPECT_FALSE( complex_2.isProjection() );
 	EXPECT_FALSE( complex_2.commutesWith(complex_2) );
 
@@ -302,6 +308,7 @@ TEST_F(MatrixTest, Properties_Boolean)
 	EXPECT_FALSE( complex_3.isSkewSymmetric() );
 	EXPECT_TRUE ( complex_3.isHermitian() );
 	EXPECT_FALSE( complex_3.isSkewHermitian() );
+	EXPECT_FALSE( complex_3.isOrthogonal() );
 	EXPECT_FALSE( complex_3.isProjection() );
 	EXPECT_TRUE ( complex_3.commutesWith(complex_3) );
 

@@ -151,6 +151,7 @@ namespace matrix
 			Matrix<T> complexConjugate() const;
 			Matrix<T> conjugateTranspose() const;
 			//Matrix<T> inverse() const;
+			Matrix<T> identity() const;
 
 
 			//
@@ -191,22 +192,6 @@ namespace matrix
 			//T determinant() const;
 
 	}; // Matrix
-
-
-	/// Make indentity matrix with proper dimesion
-	template <typename T>
-	Matrix<T> makeIdentity(const uint32_t& dimension, const std::string& _pad = emptyStr)
-	{
-		Matrix<T> result(dimension, dimension, 0, _pad);
-
-		for (uint32_t i=0; i<dimension; ++i)
-		{
-			result(i,i) = 1;
-		}
-
-		// Return identity matrix:
-		return result;
-	}
 
 
 	//
@@ -662,6 +647,20 @@ namespace matrix
 		return matrixCT.complexConjugate().transpose();
 	}
 
+	// identity
+	template <typename T>
+	Matrix<T> Matrix<T>::identity() const
+	{
+		Matrix result = *this;
+
+		for (uint32_t i=0; i < this->numRows; ++i)
+		{
+			result(i,i) = 1;
+		}
+
+		return result;
+	}
+
 	// isSquare
 	template <typename T>
 	bool Matrix<T>::isSquare() const
@@ -799,8 +798,8 @@ namespace matrix
 			return false;
 		}
 		
-		if ( (this->isNormal()) && 
-		     (((*this)*this->transpose()) == makeIdentity(this->getNumRows()))
+		if ( (this->isNormal()) &&
+		     (((*this)*this->transpose()) == this->identity())
 			 )
 		{
 			return true;
