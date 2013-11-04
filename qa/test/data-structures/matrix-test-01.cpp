@@ -80,6 +80,10 @@ TEST_F(MatrixTest, OperatorDisplay)
 	});
 
 	EXPECT_NO_THROW({
+		cout << "Identity 4x4: " << endl << M::makeIdentity<uint32_t>(4, "\t") << endl;
+	});
+
+	EXPECT_NO_THROW({
 		cout << "Real 3x3 - Ones: " << endl << real_1 << endl;
 	});
 

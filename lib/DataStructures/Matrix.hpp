@@ -165,8 +165,8 @@ namespace matrix
 			bool isHermitian() const;					///<  A = A^dagger (Complex extension of isSymmetric()) ?
 			bool isSelfAdjoint() const;       ///<  Same as isHermitian() 
 			bool isSkewHermitian() const;			///< -A = A^dagger (Complex extension of isSkewSymmetric())
-			//bool isNormal() const;						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
-			//bool isOrthogonal() const;				///< A*A^T = A^T*A = I
+			bool isNormal() const;						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
+			bool isOrthogonal() const;				///< A*A^T = A^T*A = I
 			//bool isUnitary() const;						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
 			//bool isInvertible() const;				///< A*A^-1 = I
 			//bool isSingular() const;					///< A has no inverse (det A = 0)
@@ -191,6 +191,27 @@ namespace matrix
 			//T determinant() const;
 
 	}; // Matrix
+
+
+	/// Make indentity matrix with proper dimesion
+	template <typename T>
+	Matrix<T> makeIdentity(const uint32_t& dimension, const std::string& _pad = emptyStr)
+	{
+		Matrix<T> result(dimension, dimension, 0, _pad);
+
+		for (uint32_t i=0; i<dimension; ++i)
+		{
+			result(i,i) = 1;
+		}
+
+		// Return identity matrix:
+		return result;
+	}
+
+
+	//
+	// Template Implementation
+	//
 
 
 	// Default constructor
@@ -604,7 +625,7 @@ namespace matrix
 	Matrix<T> Matrix<T>::complexConjugate() const
 	{
 
-		// Check if real or not. If real, return it:
+		// Check if real or not. If real, return it since complex conjugate leaves it unchanged::
 		if ( this->isReal() )
 		{
 			return *this;
@@ -744,6 +765,51 @@ namespace matrix
 	
 	}
 
+	// isNormal
+	template <typename T>
+	bool Matrix<T>::isNormal() const
+	{
+
+		// Can't be normal if not square:
+		if ( !this->isSquare() )
+		{
+			return false;
+		}
+
+		// Seperate real from complex case:
+		if (this->isReal())
+		{
+			return this->commutesWith(this->transpose());
+		}
+		else	// Complex case
+		{
+			return this->commutesWith(this->conjugateTranspose());
+		}
+
+	}
+
+	// isOrthogonal
+	template <typename T>
+	bool Matrix<T>::isOrthogonal() const
+	{
+
+		// Can't be orthgonal is not square:
+		if ( !this->isSquare() )
+		{
+			return false;
+		}
+		
+		if ( (this->isNormal()) && 
+		     (((*this)*this->transpose()) == makeIdentity(this->getNumRows()))
+			 )
+		{
+			return true;
+		}
+
+		// Not orthogonal is none of the above are true:
+		return false;
+	}
+
 	// isProjection
 	template <typename T>
 	bool Matrix<T>::isProjection() const
@@ -783,7 +849,7 @@ namespace matrix
 			return true;
 		}
 
-		// If they aren't equal, don't commute:
+		// If they aren't equal, they don't commute:
 		return false;
 	}
 
