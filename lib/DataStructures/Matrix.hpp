@@ -131,27 +131,27 @@ namespace matrix
 			Matrix<T> operator+(const T& rhs) const;							///< Matrix/Scalar Addition
 			Matrix<T> operator-(const T& rhs) const;							///< Matrix/Scalar Subtraction
 
-			/// Matrix (unitary)
+			// Matrix (unitary)
 			Matrix<T> operator-() const;													///< Matrix Negative
-			Matrix<T> operator^(const uint32_t& power) const;			///< Power function
+			Matrix<T> operator^(const uint32_t& power) const;			///< Matrix Power function
 
-			/// Element Access
-			T& operator()(const uint32_t& row, const uint32_t& col);
-			const T& operator()(const uint32_t& row, const uint32_t& col) const;
+			// Element Access
+			T& operator()(const uint32_t& row, const uint32_t& col);								///< Matrix Element Access
+			const T& operator()(const uint32_t& row, const uint32_t& col) const;		///< Matrix Element Access (const)
 
-			/// Comparison
-			bool operator==(const Matrix<T>& rhs) const;
+			// Comparison
+			bool operator==(const Matrix<T>& rhs) const;					///< Matrix Comparison
 
 
 			//
 			// Operations:
 			//
 
-			Matrix<T> transpose() const;			// Not in-place
-			Matrix<T> complexConjugate() const;
-			Matrix<T> conjugateTranspose() const;
-			//Matrix<T> inverse() const;
-			Matrix<T> identity() const;
+			Matrix<T> transpose() const;						///< Matrix Transpose
+			Matrix<T> complexConjugate() const;			///< Matrix Complex Conjugate
+			Matrix<T> conjugateTranspose() const;		///< Matrix Complex Conjugate Transpose
+			//Matrix<T> inverse() const;							///< Matrix Inverse
+			Matrix<T> identity() const;							///< Identity matrix of same size and type
 
 
 			//
@@ -248,6 +248,7 @@ namespace matrix
 	Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> _matrix)
 				: pad("")
 	{
+
 		// Set new row and col sizes:
 		numRows = _matrix.size();
 		numCols = _matrix.begin()->size();
@@ -290,6 +291,7 @@ namespace matrix
 	template <typename T>
 	std::ostream& operator<<(std::ostream& os, const Matrix<T>& rhs)
 	{
+
 		// Iterate through and print out each element:
 		for (const auto& rows : rhs.getMatrix())
 		{
@@ -314,6 +316,7 @@ namespace matrix
 	template <typename T>
 	Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs)
 	{
+
 		// If rhs is already this matrix, no reason to continue:
 		if( this == &rhs )
 		{
