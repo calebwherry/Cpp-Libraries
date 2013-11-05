@@ -37,7 +37,7 @@ class MatrixTest : public ::testing::Test
 	protected:
 
 		// Test Objects:
-		M::Matrix<double> I3, real_1, real_1b, real_1c, real_2, real_3;
+		M::Matrix<double> I0, I1, I2, I3, I4, real_1, real_1b, real_1c, real_2, real_3;
 		M::Matrix<complex<double>> complex_1, complex_2, complex_3;
 
 		// Print pad
@@ -50,7 +50,20 @@ class MatrixTest : public ::testing::Test
 			// Pad:
 			pad = "\t";
 
-			// Matrices
+			// Matrices:
+			I0 = { {}
+					 };
+			I0.setPad(pad);
+
+			I1 = { {1}
+					 };
+			I1.setPad(pad);
+
+			I2 = { {1,0},
+						 {0,1}
+					 };
+			I2.setPad(pad);
+
 			I3 = { {1, 0, 0},
 						 {0, 1, 0},
 						 {0, 0, 1}
@@ -62,6 +75,7 @@ class MatrixTest : public ::testing::Test
 			real_1c = M::Matrix<double>(3, 3, 3.0, pad);
 			real_2  = M::Matrix<double>(3, 4, 0, pad);
 			real_3  = M::Matrix<double>(4, 4, 0, pad);
+			I4 = real_3.identity();
 			complex_1  = M::Matrix<complex<double>>(3, 3, complex<double>(1,1), pad);
 			complex_2  = M::Matrix<complex<double>>(3, 4, complex<double>(3,3), pad);
 			complex_3  = M::Matrix<complex<double>>(4, 4, complex<double>(1,0), pad);
@@ -77,11 +91,23 @@ TEST_F(MatrixTest, OperatorDisplay)
 {
 
 	EXPECT_NO_THROW({
+		cout << "Identity 0x0: " << endl << I0 << endl;
+	});
+
+	EXPECT_NO_THROW({
+		cout << "Identity 1x1: " << endl << I1 << endl;
+	});
+
+	EXPECT_NO_THROW({
+		cout << "Identity 2x2: " << endl << I2 << endl;
+	});
+	
+	EXPECT_NO_THROW({
 		cout << "Identity 3x3: " << endl << I3 << endl;
 	});
 
 	EXPECT_NO_THROW({
-		cout << "Identity 4x4: " << endl << real_3.identity() << endl;
+		cout << "Identity 4x4: " << endl << I4 << endl;
 	});
 
 	EXPECT_NO_THROW({
@@ -156,7 +182,13 @@ TEST_F(MatrixTest, OperatorEqual)
 
 TEST_F(MatrixTest, OperatorDivide_Scalar)
 {
-	// TODO
+
+	EXPECT_EQ( real_1 / 1, real_1);
+
+	EXPECT_THROW({
+		auto temp = real_1 / 0;
+	}, logic_error);
+	
 }
 
 
