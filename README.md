@@ -29,6 +29,10 @@ Installs all the goodies that are neccessary for development such as gcc and g++
 Installs Boost headers in /usr/include:
 
     $ apt-get install libboost-dev
+    
+#### Doxygen:
+
+    $ apt-get install doxygen
 
 #### GNU Scientific Library
 
