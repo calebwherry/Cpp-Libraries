@@ -1,5 +1,4 @@
 ////////////////////////////////////////
-////////////////////////////////////////
 //
 //  File:
 //      \file Matrix.hpp
@@ -10,7 +9,6 @@
 //  Author:
 //      \author J. Caleb Wherry
 //
-////////////////////////////////////////
 ////////////////////////////////////////
 
 // Include Guards:
@@ -38,23 +36,19 @@ namespace matrix
 	/// Empty string used for default pad in matrix printing
 	const std::string emptyStr = std::string();
 
-	/// Matrix Class
+	/// Matrix class
 	template <typename T>
-	class Matrix
+	class Matrix 
 	{
+
 		private:
-
-			// Matrix
 			std::vector<std::vector<T>> matrix;		///< Matrix
-
-			// Size
-			uint32_t numRows;		///< Number of rows
-			uint32_t numCols;		///< Number of columns
-
-			// Printing Pad:
-			std::string pad;		///< Pad used when printing matrix
+			uint32_t numRows;											///< Number of rows
+			uint32_t numCols;											///< Number of columns
+			std::string pad;											///< Pad used when printing matrix
 
 		public:
+
 
 			//
 			// Constructors:
@@ -123,7 +117,7 @@ namespace matrix
 			Matrix<T> operator-(const Matrix<T>& rhs) const;			///< Matrix/Matrix Subtraction
 
 			// Matrix/Vector
-			//std::vector<T> operator*(const std::vector<T>& rhs) const;	///< Matrix/Vector Multiplication
+			//std::vector<T> operator*(const std::vector<T>& rhs) const;	// Matrix/Vector Multiplication
 
 			// Matrix/Scalar
 			Matrix<T> operator*(const T& rhs) const;							///< Matrix/Scalar Multiplication
@@ -150,7 +144,7 @@ namespace matrix
 			Matrix<T> transpose() const;						///< Matrix Transpose
 			Matrix<T> complexConjugate() const;			///< Matrix Complex Conjugate
 			Matrix<T> conjugateTranspose() const;		///< Matrix Complex Conjugate Transpose
-			//Matrix<T> inverse() const;							///< Matrix Inverse
+			//Matrix<T> inverse() const;							// Matrix Inverse
 			Matrix<T> identity() const;							///< Identity matrix of same size and type
 
 
@@ -168,18 +162,29 @@ namespace matrix
 			bool isSkewHermitian() const;			///< -A = A^dagger (Complex extension of isSkewSymmetric())
 			bool isNormal() const;						///< Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A
 			bool isOrthogonal() const;				///< A*A^T = A^T*A = I
-			//bool isUnitary() const;						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
-			//bool isInvertible() const;				///< A*A^-1 = I
-			//bool isSingular() const;					///< A has no inverse (det A = 0)
-			//bool isDegenerate() const;				///< Same as isSingular()
+			bool isUnitary() const;						///< A*A^dagger = A^dagger*A = I (Complex extension of isOrthogonal())
+			//bool isInvertible() const;				// A*A^-1 = I
+			//bool isSingular() const;					// A has no inverse (det A = 0)
+			//bool isDegenerate() const;				// Same as isSingular()
 			bool isProjection() const;				///< A = A^2
-			//bool isInvolutory() const;				///< A = A^-1 (A^2 = I)
-			//bool isDiagonal() const;					///< Are all elemnets zero except those on diagonal?
+			//bool isIdempotent() const;				// Same as isProjection()
+			//bool isInvolutory() const;				// A = A^-1 (A^2 = I)
+			//bool isDiagonal() const;					// Are all elements zero except those on diagonal?
 			//bool isTriDiagonal() const;
-			//bool isIdentity() const;					///< A = I
+			bool isIdentity() const;					///< A = I
 			//bool isTriangular() const;
-			//bool isLowerTriangular() const;
-			//bool isUpperTriangular() const;
+			//bool isUniTri() const;
+			//bool isStrictlyTri() const;
+			//bool isLowerTri() const;
+			//bool isUniLowerTri() const;
+			//bool isStrictlyLowerTri() const;
+			//bool isUpperTri() const;
+			//bool isUniUpperTri() const;
+			//bool isStrictlyUpperTri() const;
+			//bool isUnipotent() const;				// All eigenvalues are 1
+			//bool isNilpotent() const;				// A^k = 0 for some positive integer k.
+			//bool isDiagonalizable() const;
+			//bool isDefective() const;				// A not diagonalizable?
 			bool commutesWith(const Matrix<T>& rhs) const;
 
 			//
@@ -190,8 +195,13 @@ namespace matrix
 			T sum() const;										///< Sum of all elements
 			//T mean() const;
 			//T determinant() const;
+			//T p1Norm() const;								// P=1 Norm: Maximum absolute column sum
+			//T p2Norm() const;								// P=2 Norm: Euclidean Norm
+			//T pInfNorm() const;							// P=inf Norm: Maximum absolute row sum
+			//T frobeniusNorm() const;
+			//T maxNorm() const
 
-	}; // Matrix
+	}; // Matrix class
 
 
 	//
@@ -654,9 +664,12 @@ namespace matrix
 	template <typename T>
 	Matrix<T> Matrix<T>::identity() const
 	{
-		Matrix result = *this;
+		// Identity has to be square:
+		//	Note: We use the columns here so that right multiplying by the result matrix
+		//		still yields a matrix when applied to 'this'.
+		Matrix result(this->numCols, this->numCols, 0 , "\t");
 
-		for (uint32_t i=0; i < this->numRows; ++i)
+		for (uint32_t i=0; i < this->numCols; ++i)
 		{
 			result(i,i) = 1;
 		}
@@ -795,12 +808,13 @@ namespace matrix
 	bool Matrix<T>::isOrthogonal() const
 	{
 
-		// Can't be orthgonal is not square:
+		// Can't be orthgonal if not square:
 		if ( !this->isSquare() )
 		{
 			return false;
 		}
-		
+	
+		// Check properties:
 		if ( (this->isNormal()) &&
 		     (((*this)*this->transpose()) == this->identity())
 			 )
@@ -808,7 +822,30 @@ namespace matrix
 			return true;
 		}
 
-		// Not orthogonal is none of the above are true:
+		// Not orthogonal if none of the above are true:
+		return false;
+	}
+
+	// isUnitary
+	template <typename T>
+	bool Matrix<T>::isUnitary() const
+	{
+
+		// Can't be unitary if not square:
+		if ( !this->isSquare() )
+		{
+			return false;
+		}
+
+		// Check properties:
+		if ( (this->isNormal()) &&
+		     (((*this)*this->conjugateTranspose()) == this->identity())
+			 )
+		{
+			return true;
+		}
+
+		// Not unitary if none of the above are true:
 		return false;
 	}
 
@@ -830,6 +867,27 @@ namespace matrix
 		}
 
 		// If it doesn't equal its square, its not a projection:
+		return false;
+	}
+
+	// isIdentity
+	template <typename T>
+	bool Matrix<T>::isIdentity() const
+	{
+
+		// Can't be the identity if not square:
+		if ( !this->isSquare() )
+		{
+			return false;
+		}
+
+		// Check if matrix is equal to its identity:
+		if ( (*this) == this->identity() )
+		{
+			return true;
+		}
+
+		// If not equal, not the identity:
 		return false;
 	}
 

@@ -40,7 +40,7 @@ run-test:
 
 # Create documentation:
 doc:
-	@echo -n '** Creating Doxygen docs at $(DOC_DIR)/html... '
+	@echo -n '** Creating Doxygen docs at $(DOC_DIR)... '
 	@doxygen $(DOXYFILE) > /dev/null 2>&1
 	@echo 'done.'
 
