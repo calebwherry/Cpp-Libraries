@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="namespacedoublyLinkedList" kind="namespace">
+    <compoundname>doublyLinkedList</compoundname>
+    <innerclass refid="structdoublyLinkedList_1_1Node" prot="public">doublyLinkedList::Node</innerclass>
+    <innerclass refid="classdoublyLinkedList_1_1DoublyLinkedList" prot="public">doublyLinkedList::DoublyLinkedList</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="30" column="1"/>
+  </compounddef>
+</doxygen>

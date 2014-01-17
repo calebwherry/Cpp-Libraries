@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="classtree_1_1Tree" kind="class" prot="public" abstract="yes">
+    <compoundname>tree::Tree</compoundname>
+    <derivedcompoundref refid="classbinaryTree_1_1BinaryTree" prot="public" virt="non-virtual">binaryTree::BinaryTree&lt; T &gt;</derivedcompoundref>
+    <includes refid="Tree_8hpp" local="yes">Tree.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classtree_1_1Tree_1ae808b4b4b204faaa40e1e636ebfab8e6" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tree::Tree::depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <briefdescription>
+<para><ref refid="classtree_1_1Tree" kindref="compound">Tree</ref> Depth. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" line="46" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classtree_1_1Tree_1a66755a8dbcf714aa93e63952bdb62484" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tree::Tree::Tree</definition>
+        <argsstring>()</argsstring>
+        <name>Tree</name>
+        <briefdescription>
+<para>Default Constructor: </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" line="37" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classtree_1_1Tree_1af393c36d4a1520937a7d5fcd985d9e08" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tree::Tree::~Tree</definition>
+        <argsstring>()</argsstring>
+        <name>~Tree</name>
+        <briefdescription>
+<para>Deconstructor: </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" line="40" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classtree_1_1Tree_1ae5b70de2d45be21d9b1b272c945b6248" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void tree::Tree::print</definition>
+        <argsstring>()=0</argsstring>
+        <name>print</name>
+        <reimplementedby refid="classbinaryTree_1_1BinaryTree_1ad57b6b69f944ae45262c635fb7cc3bdc">print</reimplementedby>
+        <briefdescription>
+<para>Pure virtual Print: </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" line="43" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classtree_1_1Tree" kindref="compound">Tree</ref> Class: </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="18">
+        <label>tree::Tree</label>
+        <link refid="classtree_1_1Tree"/>
+      </node>
+      <node id="19">
+        <label>binaryTree::BinaryTree&lt; T &gt;</label>
+        <link refid="classbinaryTree_1_1BinaryTree"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" line="32" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Tree.hpp" bodystart="32" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classtree_1_1Tree_1ae808b4b4b204faaa40e1e636ebfab8e6" prot="protected" virt="non-virtual"><scope>tree::Tree</scope><name>depth</name></member>
+      <member refid="classtree_1_1Tree_1ae5b70de2d45be21d9b1b272c945b6248" prot="protected" virt="pure-virtual"><scope>tree::Tree</scope><name>print</name></member>
+      <member refid="classtree_1_1Tree_1a66755a8dbcf714aa93e63952bdb62484" prot="protected" virt="non-virtual"><scope>tree::Tree</scope><name>Tree</name></member>
+      <member refid="classtree_1_1Tree_1af393c36d4a1520937a7d5fcd985d9e08" prot="protected" virt="non-virtual"><scope>tree::Tree</scope><name>~Tree</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

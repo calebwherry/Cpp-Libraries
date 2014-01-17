@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="classdoublyLinkedList_1_1DoublyLinkedList" kind="class" prot="public">
+    <compoundname>doublyLinkedList::DoublyLinkedList</compoundname>
+    <includes refid="DoublyLinkedList_8hpp" local="yes">DoublyLinkedList.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classdoublyLinkedList_1_1DoublyLinkedList_1ab29d146595ee66d859611599bbccc19d" prot="private" static="no" mutable="no">
+        <type><ref refid="structdoublyLinkedList_1_1Node" kindref="compound">Node</ref>&lt; T &gt; *</type>
+        <definition>Node&lt;T&gt;* doublyLinkedList::DoublyLinkedList&lt; T &gt;::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="43" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdoublyLinkedList_1_1DoublyLinkedList_1af31f560be2e8532064d74d1c2466a114" prot="private" static="no" mutable="no">
+        <type><ref refid="structdoublyLinkedList_1_1Node" kindref="compound">Node</ref>&lt; T &gt; *</type>
+        <definition>Node&lt;T&gt;* doublyLinkedList::DoublyLinkedList&lt; T &gt;::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="44" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdoublyLinkedList_1_1DoublyLinkedList_1a894259d7ab4a0e16bf3a1221d1d4bc75" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int doublyLinkedList::DoublyLinkedList&lt; T &gt;::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="45" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1a2b10fc07de33dbdc2fa37c1765c52946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>doublyLinkedList::DoublyLinkedList&lt; T &gt;::DoublyLinkedList</definition>
+        <argsstring>()</argsstring>
+        <name>DoublyLinkedList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="48" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="63" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1aaecb4b25b712cf777f20de65c87b0629" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void doublyLinkedList::DoublyLinkedList&lt; T &gt;::pushBack</definition>
+        <argsstring>(T data)</argsstring>
+        <name>pushBack</name>
+        <param>
+          <type>T</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="50" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="71" bodyend="95"/>
+        <references refid="structdoublyLinkedList_1_1Node_1aa50be993ba9f34fe04dc7920d4dde8cf" compoundref="DoublyLinkedList_8hpp" startline="34">doublyLinkedList::Node&lt; T &gt;::datum</references>
+        <references refid="structdoublyLinkedList_1_1Node_1a1513e3f4f530d95c634deeb9ed9cfdbe" compoundref="DoublyLinkedList_8hpp" startline="36">doublyLinkedList::Node&lt; T &gt;::next</references>
+        <references refid="structdoublyLinkedList_1_1Node_1ac5e129edb8062b6dde2866cd930e960d" compoundref="DoublyLinkedList_8hpp" startline="35">doublyLinkedList::Node&lt; T &gt;::prev</references>
+      </memberdef>
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1a4170c12e58db34d356225a05bb9684f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void doublyLinkedList::DoublyLinkedList&lt; T &gt;::pushFront</definition>
+        <argsstring>(T data)</argsstring>
+        <name>pushFront</name>
+        <param>
+          <type>T</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="52" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1a53d85f48953602617330b8abdd6efa5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void doublyLinkedList::DoublyLinkedList&lt; T &gt;::popBack</definition>
+        <argsstring>(T data)</argsstring>
+        <name>popBack</name>
+        <param>
+          <type>T</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="54" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="104" bodyend="116"/>
+        <references refid="structdoublyLinkedList_1_1Node_1aa50be993ba9f34fe04dc7920d4dde8cf" compoundref="DoublyLinkedList_8hpp" startline="34">doublyLinkedList::Node&lt; T &gt;::datum</references>
+      </memberdef>
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1ad6714a20e69f0b31d943963b57f563e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void doublyLinkedList::DoublyLinkedList&lt; T &gt;::popFront</definition>
+        <argsstring>(T data)</argsstring>
+        <name>popFront</name>
+        <param>
+          <type>T</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="56" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classdoublyLinkedList_1_1DoublyLinkedList_1a61e3cc34cd060e6ed80761cc226f3da5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void doublyLinkedList::DoublyLinkedList&lt; T &gt;::print</definition>
+        <argsstring>()</argsstring>
+        <name>print</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="58" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="125" bodyend="135"/>
+        <references refid="structdoublyLinkedList_1_1Node_1aa50be993ba9f34fe04dc7920d4dde8cf" compoundref="DoublyLinkedList_8hpp" startline="34">doublyLinkedList::Node&lt; T &gt;::datum</references>
+        <references refid="structdoublyLinkedList_1_1Node_1a1513e3f4f530d95c634deeb9ed9cfdbe" compoundref="DoublyLinkedList_8hpp" startline="36">doublyLinkedList::Node&lt; T &gt;::next</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" line="40" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/DoublyLinkedList.hpp" bodystart="40" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1a2b10fc07de33dbdc2fa37c1765c52946" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>DoublyLinkedList</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1ab29d146595ee66d859611599bbccc19d" prot="private" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>head</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1a53d85f48953602617330b8abdd6efa5b" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>popBack</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1ad6714a20e69f0b31d943963b57f563e2" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>popFront</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1a61e3cc34cd060e6ed80761cc226f3da5" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>print</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1aaecb4b25b712cf777f20de65c87b0629" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>pushBack</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1a4170c12e58db34d356225a05bb9684f1" prot="public" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>pushFront</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1a894259d7ab4a0e16bf3a1221d1d4bc75" prot="private" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>size</name></member>
+      <member refid="classdoublyLinkedList_1_1DoublyLinkedList_1af31f560be2e8532064d74d1c2466a114" prot="private" virt="non-virtual"><scope>doublyLinkedList::DoublyLinkedList</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

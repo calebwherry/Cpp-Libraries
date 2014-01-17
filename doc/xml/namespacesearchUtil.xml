@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="namespacesearchUtil" kind="namespace">
+    <compoundname>searchUtil</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacesearchUtil_1abacab724882caea0ce2af75a7e208d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool searchUtil::exists</definition>
+        <argsstring>()</argsstring>
+        <name>exists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Searching/SearchUtil.cpp" line="27" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Searching/SearchUtil.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="namespacesearchUtil" kindref="compound">searchUtil</ref> Namespace </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Searching/SearchUtil.cpp" line="25" column="1"/>
+  </compounddef>
+</doxygen>

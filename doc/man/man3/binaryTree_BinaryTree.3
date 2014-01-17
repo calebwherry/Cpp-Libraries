@@ -1,0 +1,226 @@
+.TH "binaryTree::BinaryTree< T >" 3 "Thu Jan 16 2014" "C++ Libraries" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+binaryTree::BinaryTree< T > \- 
+.PP
+Binary Tree class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include 'BinaryTree\&.hpp'\fP
+.PP
+Inherits \fBtree::Tree\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinaryTree\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fB~BinaryTree\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "void \fBinsert\fP (T givenData)"
+.br
+.RI "\fIInsert item\&. \fP"
+.ti -1c
+.RI "void \fBinsert\fP (T givenData, \fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIInsert item at node\&. \fP"
+.ti -1c
+.RI "void \fBremove\fP (T givenData)"
+.br
+.RI "\fIRemove item\&. \fP"
+.ti -1c
+.RI "void \fBremove\fP (T givenData, \fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIRemove item at node\&. \fP"
+.ti -1c
+.RI "void \fBpreOrderTraversal\fP ()"
+.br
+.RI "\fIpreOrderTravesal from the root node \fP"
+.ti -1c
+.RI "void \fBpreOrderTraversal\fP (\fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIpreOrderTravesal from a given node \fP"
+.ti -1c
+.RI "void \fBinOrderTraversal\fP ()"
+.br
+.RI "\fIinOrderTraversal from the root node \fP"
+.ti -1c
+.RI "void \fBinOrderTraversal\fP (\fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIinOrderTraversal from a given node \fP"
+.ti -1c
+.RI "void \fBpostOrderTraversal\fP ()"
+.br
+.RI "\fIpostOrderTraversal from the root node \fP"
+.ti -1c
+.RI "void \fBpostOrderTraversal\fP (\fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIpostOrderTraversal from a given node \fP"
+.ti -1c
+.RI "void \fBbreadthFirstTraversal\fP ()"
+.br
+.RI "\fIbreadthFirstTraversal from the root node \fP"
+.ti -1c
+.RI "void \fBbreadthFirstTraversal\fP (\fBNode\fP< T > *givenNode)"
+.br
+.RI "\fIbreadthFirstTraversal from a given node \fP"
+.ti -1c
+.RI "void \fBprint\fP ()"
+.br
+.RI "\fIPrint Binary Tree\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBdepth\fP"
+.br
+.RI "\fI\fBTree\fP Depth\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBNode\fP< T > * \fBroot\fP"
+.br
+.RI "\fIRoot \fBNode\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class binaryTree::BinaryTree< T >"
+Binary Tree class\&. 
+.PP
+Definition at line 51 of file BinaryTree\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBbinaryTree::BinaryTree\fP< T >::\fBBinaryTree\fP ()"
+
+.PP
+Default constructor\&. 
+.PP
+Definition at line 106 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > \fBbinaryTree::BinaryTree\fP< T >::~\fBBinaryTree\fP ()"
+
+.PP
+Deconstructor\&. 
+.PP
+Definition at line 112 of file BinaryTree\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::breadthFirstTraversal ()"
+
+.PP
+breadthFirstTraversal from the root node 
+.PP
+Definition at line 251 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::breadthFirstTraversal (\fBNode\fP< T > *givenNode)"
+
+.PP
+breadthFirstTraversal from a given node 
+.PP
+Definition at line 257 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::inOrderTraversal ()"
+
+.PP
+inOrderTraversal from the root node 
+.PP
+Definition at line 204 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::inOrderTraversal (\fBNode\fP< T > *givenNode)"
+
+.PP
+inOrderTraversal from a given node 
+.PP
+Definition at line 210 of file BinaryTree\&.hpp\&.
+.PP
+References binaryTree::Node< T >::datum, binaryTree::Node< T >::leftChild, and binaryTree::Node< T >::rightChild\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::insert (TgivenData)"
+
+.PP
+Insert item\&. 
+.PP
+Definition at line 117 of file BinaryTree\&.hpp\&.
+.PP
+References binaryTree::Node< T >::datum\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::insert (TgivenData, \fBNode\fP< T > *givenNode)"
+
+.PP
+Insert item at node\&. 
+.PP
+Definition at line 133 of file BinaryTree\&.hpp\&.
+.PP
+References binaryTree::Node< T >::datum, binaryTree::Node< T >::leftChild, and binaryTree::Node< T >::rightChild\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::postOrderTraversal ()"
+
+.PP
+postOrderTraversal from the root node 
+.PP
+Definition at line 228 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::postOrderTraversal (\fBNode\fP< T > *givenNode)"
+
+.PP
+postOrderTraversal from a given node 
+.PP
+Definition at line 234 of file BinaryTree\&.hpp\&.
+.PP
+References binaryTree::Node< T >::datum, binaryTree::Node< T >::leftChild, and binaryTree::Node< T >::rightChild\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::preOrderTraversal ()"
+
+.PP
+preOrderTravesal from the root node 
+.PP
+Definition at line 181 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::preOrderTraversal (\fBNode\fP< T > *givenNode)"
+
+.PP
+preOrderTravesal from a given node 
+.PP
+Definition at line 187 of file BinaryTree\&.hpp\&.
+.PP
+References binaryTree::Node< T >::datum, binaryTree::Node< T >::leftChild, and binaryTree::Node< T >::rightChild\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::print ()\fC [virtual]\fP"
+
+.PP
+Print Binary Tree\&. 
+.PP
+Implements \fBtree::Tree\fP\&.
+.PP
+Definition at line 265 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::remove (TgivenData)"
+
+.PP
+Remove item\&. 
+.PP
+Definition at line 169 of file BinaryTree\&.hpp\&.
+.SS "template<typename T > void \fBbinaryTree::BinaryTree\fP< T >::remove (TgivenData, \fBNode\fP< T > *givenNode)"
+
+.PP
+Remove item at node\&. 
+.PP
+Definition at line 175 of file BinaryTree\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int tree::Tree::depth\fC [protected]\fP, \fC [inherited]\fP"
+
+.PP
+\fBTree\fP Depth\&. 
+.PP
+Definition at line 46 of file Tree\&.hpp\&.
+.SS "template<typename T > \fBNode\fP<T>* \fBbinaryTree::BinaryTree\fP< T >::root\fC [private]\fP"
+
+.PP
+Root \fBNode\fP\&. 
+.PP
+Definition at line 55 of file BinaryTree\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ Libraries from the source code\&.

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="classBogoSort" kind="class" prot="public">
+    <compoundname>BogoSort</compoundname>
+    <includes refid="BogoSort_8hpp" local="yes">BogoSort.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBogoSort_1ae72e81578cb2ad4e7122022d2dfffba8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; BogoSort&lt; T &gt;::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="34" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBogoSort_1a70d62ac6e535c9768925b76557420e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BogoSort&lt; T &gt;::BogoSort</definition>
+        <argsstring>()</argsstring>
+        <name>BogoSort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="37" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classBogoSort_1af3f2da4dfd2c346c9ee1a6faf5e34eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BogoSort&lt; T &gt;::BogoSort</definition>
+        <argsstring>(std::vector&lt; T &gt; inList)</argsstring>
+        <name>BogoSort</name>
+        <param>
+          <type>std::vector&lt; T &gt;</type>
+          <declname>inList</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="39" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classBogoSort_1a3df736ca0fbf29887e2d18de3baf6dca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BogoSort&lt; T &gt;::sort</definition>
+        <argsstring>()</argsstring>
+        <name>sort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="41" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="59" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classBogoSort_1a94fdf878f8e80e93f1e3c65a41c3f4a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BogoSort&lt; T &gt;::print</definition>
+        <argsstring>()</argsstring>
+        <name>print</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="43" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="76" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" line="31" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/Sorting/BogoSort.hpp" bodystart="31" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classBogoSort_1a70d62ac6e535c9768925b76557420e9d" prot="public" virt="non-virtual"><scope>BogoSort</scope><name>BogoSort</name></member>
+      <member refid="classBogoSort_1af3f2da4dfd2c346c9ee1a6faf5e34eb0" prot="public" virt="non-virtual"><scope>BogoSort</scope><name>BogoSort</name></member>
+      <member refid="classBogoSort_1ae72e81578cb2ad4e7122022d2dfffba8" prot="private" virt="non-virtual"><scope>BogoSort</scope><name>list</name></member>
+      <member refid="classBogoSort_1a94fdf878f8e80e93f1e3c65a41c3f4a3" prot="public" virt="non-virtual"><scope>BogoSort</scope><name>print</name></member>
+      <member refid="classBogoSort_1a3df736ca0fbf29887e2d18de3baf6dca" prot="public" virt="non-virtual"><scope>BogoSort</scope><name>sort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

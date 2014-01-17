@@ -1,0 +1,615 @@
+.TH "matrix::Matrix< T >" 3 "Thu Jan 16 2014" "C++ Libraries" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+matrix::Matrix< T > \- 
+.PP
+\fBMatrix\fP class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include 'Matrix\&.hpp'\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix\fP ()"
+.br
+.RI "\fIDefault Constructor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP (const \fBMatrix\fP< T > &rhs)"
+.br
+.RI "\fICopy Constructor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP (uint32_t _numRows, uint32_t _numCols, const T &initVals=0, const std::string &_pad=\fBemptyStr\fP)"
+.br
+.RI "\fICustom Constructor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP (std::initializer_list< std::initializer_list< T >> _matrix)"
+.br
+.RI "\fIInitializer_list Constructor\&. \fP"
+.ti -1c
+.RI "\fB~Matrix\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "std::vector< std::vector< T > > \fBgetMatrix\fP () const "
+.br
+.RI "\fI\fBMatrix\fP Accessor\&. \fP"
+.ti -1c
+.RI "uint32_t \fBgetNumRows\fP () const "
+.br
+.ti -1c
+.RI "uint32_t \fBgetNumCols\fP () const "
+.br
+.RI "\fIRow accessor\&. \fP"
+.ti -1c
+.RI "std::string \fBgetPad\fP () const "
+.br
+.RI "\fIColumns accessor\&. \fP"
+.ti -1c
+.RI "void \fBsetPad\fP (const std::string &_pad)"
+.br
+.RI "\fIPad accessor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > & \fBoperator=\fP (const \fBMatrix\fP< T > &rhs)"
+.br
+.RI "\fIAssignment\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator*\fP (const \fBMatrix\fP< T > &rhs) const "
+.br
+.RI "\fIMatrix/Matrix Multiplication\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator+\fP (const \fBMatrix\fP< T > &rhs) const "
+.br
+.RI "\fIMatrix/Matrix Addition\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator-\fP (const \fBMatrix\fP< T > &rhs) const "
+.br
+.RI "\fIMatrix/Matrix Subtraction\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator*\fP (const T &rhs) const "
+.br
+.RI "\fIMatrix/Scalar Multiplication\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator/\fP (const T &rhs) const "
+.br
+.RI "\fIMatrix/Scalar Division\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator+\fP (const T &rhs) const "
+.br
+.RI "\fIMatrix/Scalar Addition\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator-\fP (const T &rhs) const "
+.br
+.RI "\fIMatrix/Scalar Subtraction\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator-\fP () const "
+.br
+.RI "\fI\fBMatrix\fP Negative\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBoperator^\fP (const uint32_t &power) const "
+.br
+.RI "\fI\fBMatrix\fP Power function\&. \fP"
+.ti -1c
+.RI "T & \fBoperator()\fP (const uint32_t &row, const uint32_t &col)"
+.br
+.RI "\fI\fBMatrix\fP Element Access\&. \fP"
+.ti -1c
+.RI "const T & \fBoperator()\fP (const uint32_t &row, const uint32_t &col) const "
+.br
+.RI "\fI\fBMatrix\fP Element Access (const) \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBMatrix\fP< T > &rhs) const "
+.br
+.RI "\fI\fBMatrix\fP Comparison\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBtranspose\fP () const "
+.br
+.RI "\fI\fBMatrix\fP Transpose\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBcomplexConjugate\fP () const "
+.br
+.RI "\fI\fBMatrix\fP Complex Conjugate\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBconjugateTranspose\fP () const "
+.br
+.RI "\fI\fBMatrix\fP Complex Conjugate Transpose\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP< T > \fBidentity\fP () const "
+.br
+.RI "\fIIdentity matrix of same size and type\&. \fP"
+.ti -1c
+.RI "bool \fBisSquare\fP () const "
+.br
+.RI "\fIIs matrix square? \fP"
+.ti -1c
+.RI "bool \fBisReal\fP () const "
+.br
+.RI "\fIAre all elements real? \fP"
+.ti -1c
+.RI "bool \fBisComplex\fP () const "
+.br
+.RI "\fIDo any elements have imaginary parts? \fP"
+.ti -1c
+.RI "bool \fBisSymmetric\fP () const "
+.br
+.RI "\fIA = A^T ? \fP"
+.ti -1c
+.RI "bool \fBisSkewSymmetric\fP () const "
+.br
+.RI "\fI-A = A^T ? \fP"
+.ti -1c
+.RI "bool \fBisHermitian\fP () const "
+.br
+.RI "\fIA = A^dagger (Complex extension of \fBisSymmetric()\fP) ? \fP"
+.ti -1c
+.RI "bool \fBisSelfAdjoint\fP () const "
+.br
+.RI "\fISame as \fBisHermitian()\fP \fP"
+.ti -1c
+.RI "bool \fBisSkewHermitian\fP () const "
+.br
+.RI "\fI-A = A^dagger (Complex extension of \fBisSkewSymmetric()\fP) \fP"
+.ti -1c
+.RI "bool \fBisNormal\fP () const "
+.br
+.RI "\fIReal: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A\&. \fP"
+.ti -1c
+.RI "bool \fBisOrthogonal\fP () const "
+.br
+.RI "\fIA*A^T = A^T*A = I\&. \fP"
+.ti -1c
+.RI "bool \fBisUnitary\fP () const "
+.br
+.RI "\fIA*A^dagger = A^dagger*A = I (Complex extension of \fBisOrthogonal()\fP) \fP"
+.ti -1c
+.RI "bool \fBisProjection\fP () const "
+.br
+.RI "\fIA = A^2\&. \fP"
+.ti -1c
+.RI "bool \fBisIdentity\fP () const "
+.br
+.RI "\fIA = I\&. \fP"
+.ti -1c
+.RI "bool \fBcommutesWith\fP (const \fBMatrix\fP< T > &rhs) const "
+.br
+.ti -1c
+.RI "T \fBtrace\fP () const "
+.br
+.RI "\fISum of diagonal elements\&. \fP"
+.ti -1c
+.RI "T \fBsum\fP () const "
+.br
+.RI "\fISum of all elements\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::vector< T > > \fBmatrix\fP"
+.br
+.RI "\fI\fBMatrix\fP\&. \fP"
+.ti -1c
+.RI "uint32_t \fBnumRows\fP"
+.br
+.RI "\fINumber of rows\&. \fP"
+.ti -1c
+.RI "uint32_t \fBnumCols\fP"
+.br
+.RI "\fINumber of columns\&. \fP"
+.ti -1c
+.RI "std::string \fBpad\fP"
+.br
+.RI "\fIPad used when printing matrix\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "template<typename U > std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBMatrix\fP< T > &rhs)"
+.br
+.RI "\fIPad modifier\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class matrix::Matrix< T >"
+\fBMatrix\fP class\&. 
+.PP
+Definition at line 41 of file Matrix\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBmatrix::Matrix\fP< T >::\fBMatrix\fP ()"
+
+.PP
+Default Constructor\&. 
+.PP
+Definition at line 214 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::matrix\&.
+.SS "template<typename T > \fBmatrix::Matrix\fP< T >::\fBMatrix\fP (const \fBMatrix\fP< T > &rhs)"
+
+.PP
+Copy Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP \fBMatrix\fP to copy from\&. 
+.RE
+.PP
+
+.PP
+Definition at line 226 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getMatrix(), matrix::Matrix< T >::getNumCols(), matrix::Matrix< T >::getNumRows(), and matrix::Matrix< T >::getPad()\&.
+.SS "template<typename T > \fBmatrix::Matrix\fP< T >::\fBMatrix\fP (uint32_t_numRows, uint32_t_numCols, const T &initVals = \fC0\fP, const std::string &_pad = \fC\fBemptyStr\fP\fP)"
+
+.PP
+Custom Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI_numRows\fP Number of rows new matrix will have\&. 
+.br
+\fI_numCols\fP Number of columns new matrix will have\&. 
+.br
+\fIinitVals\fP Initial value of all elements of new matrix\&. 
+.br
+\fI_pad\fP Printing pad\&. 
+.RE
+.PP
+
+.PP
+Definition at line 237 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::matrix, matrix::Matrix< T >::numCols, and matrix::Matrix< T >::numRows\&.
+.SS "template<typename T > \fBmatrix::Matrix\fP< T >::\fBMatrix\fP (std::initializer_list< std::initializer_list< T >>_matrix)"
+
+.PP
+Initializer_list Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI_matrix\fP Initial values list\&. 
+.RE
+.PP
+
+.PP
+Definition at line 258 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::matrix, matrix::Matrix< T >::numCols, and matrix::Matrix< T >::numRows\&.
+.SS "template<typename T > \fBmatrix::Matrix\fP< T >::~\fBMatrix\fP ()"
+
+.PP
+Deconstructor\&. 
+.PP
+Definition at line 295 of file Matrix\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::commutesWith (const \fBMatrix\fP< T > &rhs) const"
+
+.PP
+Definition at line 896 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::getNumRows()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::complexConjugate () const"
+
+.PP
+\fBMatrix\fP Complex Conjugate\&. 
+.PP
+Definition at line 623 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::conjugateTranspose()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::conjugateTranspose () const"
+
+.PP
+\fBMatrix\fP Complex Conjugate Transpose\&. 
+.PP
+Definition at line 651 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::complexConjugate(), matrix::Matrix< T >::isReal(), and matrix::Matrix< T >::transpose()\&.
+.SS "template<typename T> std::vector<std::vector<T> > \fBmatrix::Matrix\fP< T >::getMatrix () const\fC [inline]\fP"
+
+.PP
+\fBMatrix\fP Accessor\&. 
+.PP
+Definition at line 87 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::matrix\&.
+.PP
+Referenced by matrix::Matrix< T >::Matrix()\&.
+.SS "template<typename T> uint32_t \fBmatrix::Matrix\fP< T >::getNumCols () const\fC [inline]\fP"
+
+.PP
+Row accessor\&. 
+.PP
+Definition at line 91 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::numCols\&.
+.PP
+Referenced by matrix::Matrix< T >::commutesWith(), matrix::Matrix< T >::Matrix(), matrix::Matrix< T >::operator*(), matrix::Matrix< T >::operator+(), matrix::Matrix< T >::operator-(), matrix::Matrix< T >::operator=(), and matrix::Matrix< T >::operator==()\&.
+.SS "template<typename T> uint32_t \fBmatrix::Matrix\fP< T >::getNumRows () const\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::numRows\&.
+.PP
+Referenced by matrix::Matrix< T >::commutesWith(), matrix::Matrix< T >::Matrix(), matrix::Matrix< T >::operator*(), matrix::Matrix< T >::operator+(), matrix::Matrix< T >::operator-(), matrix::Matrix< T >::operator=(), and matrix::Matrix< T >::operator==()\&.
+.SS "template<typename T> std::string \fBmatrix::Matrix\fP< T >::getPad () const\fC [inline]\fP"
+
+.PP
+Columns accessor\&. 
+.PP
+Definition at line 94 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::pad\&.
+.PP
+Referenced by matrix::Matrix< T >::Matrix(), and matrix::Matrix< T >::operator=()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::identity () const"
+
+.PP
+Identity matrix of same size and type\&. 
+.PP
+Definition at line 665 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isComplex () const"
+
+.PP
+Do any elements have imaginary parts? 
+.PP
+Definition at line 711 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isHermitian () const"
+
+.PP
+A = A^dagger (Complex extension of \fBisSymmetric()\fP) ? 
+.PP
+Definition at line 748 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isIdentity () const"
+
+.PP
+A = I\&. 
+.PP
+Definition at line 875 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isNormal () const"
+
+.PP
+Real: A*A^T = A^T*A; Complex: A*A^dagger = A^dagger*A\&. 
+.PP
+Definition at line 785 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isOrthogonal () const"
+
+.PP
+A*A^T = A^T*A = I\&. 
+.PP
+Definition at line 808 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isProjection () const"
+
+.PP
+A = A^2\&. 
+.PP
+Definition at line 854 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isReal () const"
+
+.PP
+Are all elements real? 
+.PP
+Definition at line 689 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::conjugateTranspose()\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isSelfAdjoint () const"
+
+.PP
+Same as \fBisHermitian()\fP 
+.PP
+Definition at line 762 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isSkewHermitian () const"
+
+.PP
+-A = A^dagger (Complex extension of \fBisSkewSymmetric()\fP) 
+.PP
+Definition at line 769 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isSkewSymmetric () const"
+
+.PP
+-A = A^T ? 
+.PP
+Definition at line 734 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isSquare () const"
+
+.PP
+Is matrix square? 
+.PP
+Definition at line 682 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isSymmetric () const"
+
+.PP
+A = A^T ? 
+.PP
+Definition at line 720 of file Matrix\&.hpp\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::isUnitary () const"
+
+.PP
+A*A^dagger = A^dagger*A = I (Complex extension of \fBisOrthogonal()\fP) 
+.PP
+Definition at line 831 of file Matrix\&.hpp\&.
+.SS "template<typename T > T & \fBmatrix::Matrix\fP< T >::operator() (const uint32_t &row, const uint32_t &col)"
+
+.PP
+\fBMatrix\fP Element Access\&. 
+.PP
+Definition at line 536 of file Matrix\&.hpp\&.
+.SS "template<typename T > const T & \fBmatrix::Matrix\fP< T >::operator() (const uint32_t &row, const uint32_t &col) const"
+
+.PP
+\fBMatrix\fP Element Access (const) 
+.PP
+Definition at line 551 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator* (const \fBMatrix\fP< T > &rhs) const"
+
+.PP
+Matrix/Matrix Multiplication\&. 
+.PP
+Definition at line 365 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::getNumRows()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator* (const T &rhs) const"
+
+.PP
+Matrix/Scalar Multiplication\&. 
+.PP
+Definition at line 441 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator+ (const \fBMatrix\fP< T > &rhs) const"
+
+.PP
+Matrix/Matrix Addition\&. 
+.PP
+Definition at line 397 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::getNumRows()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator+ (const T &rhs) const"
+
+.PP
+Matrix/Scalar Addition\&. 
+.PP
+Definition at line 483 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator- (const \fBMatrix\fP< T > &rhs) const"
+
+.PP
+Matrix/Matrix Subtraction\&. 
+.PP
+Definition at line 425 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::getNumRows()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator- (const T &rhs) const"
+
+.PP
+Matrix/Scalar Subtraction\&. 
+.PP
+Definition at line 501 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator- () const"
+
+.PP
+\fBMatrix\fP Negative\&. 
+.PP
+Definition at line 508 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator/ (const T &rhs) const"
+
+.PP
+Matrix/Scalar Division\&. 
+.PP
+Definition at line 459 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > & \fBmatrix::Matrix\fP< T >::operator= (const \fBMatrix\fP< T > &rhs)"
+
+.PP
+Assignment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP \fBMatrix\fP to assign 
+.RE
+.PP
+
+.PP
+Definition at line 327 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), matrix::Matrix< T >::getNumRows(), and matrix::Matrix< T >::getPad()\&.
+.SS "template<typename T > bool \fBmatrix::Matrix\fP< T >::operator== (const \fBMatrix\fP< T > &rhs) const"
+
+.PP
+\fBMatrix\fP Comparison\&. 
+.PP
+Definition at line 566 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::getNumRows()\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::operator^ (const uint32_t &power) const"
+
+.PP
+\fBMatrix\fP Power function\&. 
+.PP
+Definition at line 515 of file Matrix\&.hpp\&.
+.SS "template<typename T> void \fBmatrix::Matrix\fP< T >::setPad (const std::string &_pad)\fC [inline]\fP"
+
+.PP
+Pad accessor\&. 
+.PP
+Definition at line 95 of file Matrix\&.hpp\&.
+.PP
+References matrix::Matrix< T >::pad\&.
+.SS "template<typename T > T \fBmatrix::Matrix\fP< T >::sum () const"
+
+.PP
+Sum of all elements\&. 
+.PP
+Definition at line 934 of file Matrix\&.hpp\&.
+.SS "template<typename T > T \fBmatrix::Matrix\fP< T >::trace () const"
+
+.PP
+Sum of diagonal elements\&. 
+.PP
+Definition at line 918 of file Matrix\&.hpp\&.
+.SS "template<typename T > \fBMatrix\fP< T > \fBmatrix::Matrix\fP< T >::transpose () const"
+
+.PP
+\fBMatrix\fP Transpose\&. 
+.PP
+Definition at line 593 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::conjugateTranspose()\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename T> template<typename U > std::ostream& operator<< (std::ostream &os, const \fBMatrix\fP< T > &rhs)\fC [friend]\fP"
+
+.PP
+Pad modifier\&. Display 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIos\fP Output stream 
+.br
+\fIrhs\fP \fBMatrix\fP to output 
+.RE
+.PP
+
+.PP
+Definition at line 302 of file Matrix\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename T> std::vector<std::vector<T> > \fBmatrix::Matrix\fP< T >::matrix\fC [private]\fP"
+
+.PP
+\fBMatrix\fP\&. 
+.PP
+Definition at line 45 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::getMatrix(), and matrix::Matrix< T >::Matrix()\&.
+.SS "template<typename T> uint32_t \fBmatrix::Matrix\fP< T >::numCols\fC [private]\fP"
+
+.PP
+Number of columns\&. 
+.PP
+Definition at line 47 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::getNumCols(), and matrix::Matrix< T >::Matrix()\&.
+.SS "template<typename T> uint32_t \fBmatrix::Matrix\fP< T >::numRows\fC [private]\fP"
+
+.PP
+Number of rows\&. 
+.PP
+Definition at line 46 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::getNumRows(), and matrix::Matrix< T >::Matrix()\&.
+.SS "template<typename T> std::string \fBmatrix::Matrix\fP< T >::pad\fC [private]\fP"
+
+.PP
+Pad used when printing matrix\&. 
+.PP
+Definition at line 48 of file Matrix\&.hpp\&.
+.PP
+Referenced by matrix::Matrix< T >::getPad(), and matrix::Matrix< T >::setPad()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ Libraries from the source code\&.

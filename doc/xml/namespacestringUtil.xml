@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="namespacestringUtil" kind="namespace">
+    <compoundname>stringUtil</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacestringUtil_1a252b8681c024b4e02c792399e23c4469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stringUtil::length</definition>
+        <argsstring>(const std::string &amp;inStr)</argsstring>
+        <name>length</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>inStr</declname>
+        </param>
+        <briefdescription>
+<para>Returns length of a string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/StringUtil/StringUtil.cpp" line="28" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/StringUtil/StringUtil.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestringUtil_1afdcf72298d021f62dac0e7d8fc4da881" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string stringUtil::toString</definition>
+        <argsstring>(T inVar)</argsstring>
+        <name>toString</name>
+        <param>
+          <type>T</type>
+          <declname>inVar</declname>
+        </param>
+        <briefdescription>
+<para>Prints any type to string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/StringUtil/StringUtil.h" line="33" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/StringUtil/StringUtil.h" bodystart="33" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="namespacestringUtil" kindref="compound">stringUtil</ref> Namespace </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/StringUtil/StringUtil.cpp" line="26" column="1"/>
+  </compounddef>
+</doxygen>

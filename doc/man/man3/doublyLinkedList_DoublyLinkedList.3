@@ -1,0 +1,104 @@
+.TH "doublyLinkedList::DoublyLinkedList< T >" 3 "Thu Jan 16 2014" "C++ Libraries" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+doublyLinkedList::DoublyLinkedList< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include 'DoublyLinkedList\&.hpp'\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDoublyLinkedList\fP ()"
+.br
+.ti -1c
+.RI "void \fBpushBack\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBpushFront\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBpopBack\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBpopFront\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBprint\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBNode\fP< T > * \fBhead\fP"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBtail\fP"
+.br
+.ti -1c
+.RI "int \fBsize\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class doublyLinkedList::DoublyLinkedList< T >"
+
+.PP
+Definition at line 40 of file DoublyLinkedList\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBdoublyLinkedList::DoublyLinkedList\fP< T >::\fBDoublyLinkedList\fP ()"
+
+.PP
+Definition at line 63 of file DoublyLinkedList\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > void \fBdoublyLinkedList::DoublyLinkedList\fP< T >::popBack (Tdata)"
+
+.PP
+Definition at line 104 of file DoublyLinkedList\&.hpp\&.
+.PP
+References doublyLinkedList::Node< T >::datum\&.
+.SS "template<typename T > void \fBdoublyLinkedList::DoublyLinkedList\fP< T >::popFront (Tdata)"
+
+.PP
+Definition at line 119 of file DoublyLinkedList\&.hpp\&.
+.SS "template<typename T > void \fBdoublyLinkedList::DoublyLinkedList\fP< T >::print ()"
+
+.PP
+Definition at line 125 of file DoublyLinkedList\&.hpp\&.
+.PP
+References doublyLinkedList::Node< T >::datum, and doublyLinkedList::Node< T >::next\&.
+.SS "template<typename T > void \fBdoublyLinkedList::DoublyLinkedList\fP< T >::pushBack (Tdata)"
+
+.PP
+Definition at line 71 of file DoublyLinkedList\&.hpp\&.
+.PP
+References doublyLinkedList::Node< T >::datum, doublyLinkedList::Node< T >::next, and doublyLinkedList::Node< T >::prev\&.
+.SS "template<typename T > void \fBdoublyLinkedList::DoublyLinkedList\fP< T >::pushFront (Tdata)"
+
+.PP
+Definition at line 98 of file DoublyLinkedList\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename T > \fBNode\fP<T>* \fBdoublyLinkedList::DoublyLinkedList\fP< T >::head\fC [private]\fP"
+
+.PP
+Definition at line 43 of file DoublyLinkedList\&.hpp\&.
+.SS "template<typename T > int \fBdoublyLinkedList::DoublyLinkedList\fP< T >::size\fC [private]\fP"
+
+.PP
+Definition at line 45 of file DoublyLinkedList\&.hpp\&.
+.SS "template<typename T > \fBNode\fP<T>* \fBdoublyLinkedList::DoublyLinkedList\fP< T >::tail\fC [private]\fP"
+
+.PP
+Definition at line 44 of file DoublyLinkedList\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ Libraries from the source code\&.

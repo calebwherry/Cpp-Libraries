@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="structsinglyLinkedList_1_1Node" kind="struct" prot="public">
+    <compoundname>singlyLinkedList::Node</compoundname>
+    <includes refid="SinglyLinkedList_8hpp" local="yes">SinglyLinkedList.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsinglyLinkedList_1_1Node_1a1bef890380acd2e1749ebc5c02b682a6" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T singlyLinkedList::Node&lt; T &gt;::datum</definition>
+        <argsstring></argsstring>
+        <name>datum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" line="34" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classsinglyLinkedList_1_1SinglyLinkedList_1a69edb1ed78876f53d0c6126bfa71bb0d" compoundref="SinglyLinkedList_8hpp" startline="129" endline="140">singlyLinkedList::SinglyLinkedList&lt; T &gt;::print</referencedby>
+        <referencedby refid="classsinglyLinkedList_1_1SinglyLinkedList_1abf161ed8577dafc6dfcae9b4f0fe7a0d" compoundref="SinglyLinkedList_8hpp" startline="78" endline="100">singlyLinkedList::SinglyLinkedList&lt; T &gt;::pushBack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structsinglyLinkedList_1_1Node_1a1f041f25521a6bfc726f4bff1426e0b3" prot="public" static="no" mutable="no">
+        <type><ref refid="structsinglyLinkedList_1_1Node" kindref="compound">Node</ref> *</type>
+        <definition>Node* singlyLinkedList::Node&lt; T &gt;::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" line="35" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classsinglyLinkedList_1_1SinglyLinkedList_1a4bea2402121824773e0279477cb38ade" compoundref="SinglyLinkedList_8hpp" startline="109" endline="120">singlyLinkedList::SinglyLinkedList&lt; T &gt;::popBack</referencedby>
+        <referencedby refid="classsinglyLinkedList_1_1SinglyLinkedList_1a69edb1ed78876f53d0c6126bfa71bb0d" compoundref="SinglyLinkedList_8hpp" startline="129" endline="140">singlyLinkedList::SinglyLinkedList&lt; T &gt;::print</referencedby>
+        <referencedby refid="classsinglyLinkedList_1_1SinglyLinkedList_1abf161ed8577dafc6dfcae9b4f0fe7a0d" compoundref="SinglyLinkedList_8hpp" startline="78" endline="100">singlyLinkedList::SinglyLinkedList&lt; T &gt;::pushBack</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="11">
+        <label>singlyLinkedList::Node&lt; T &gt;</label>
+        <link refid="structsinglyLinkedList_1_1Node"/>
+        <childnode refid="11" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" line="33" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/SinglyLinkedList.hpp" bodystart="33" bodyend="36"/>
+    <listofallmembers>
+      <member refid="structsinglyLinkedList_1_1Node_1a1bef890380acd2e1749ebc5c02b682a6" prot="public" virt="non-virtual"><scope>singlyLinkedList::Node</scope><name>datum</name></member>
+      <member refid="structsinglyLinkedList_1_1Node_1a1f041f25521a6bfc726f4bff1426e0b3" prot="public" virt="non-virtual"><scope>singlyLinkedList::Node</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.4">
+  <compounddef id="namespacematrix" kind="namespace">
+    <compoundname>matrix</compoundname>
+    <innerclass refid="classmatrix_1_1Matrix" prot="public">matrix::Matrix</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacematrix_1a3410a3377815b8c5431e5436a31774c4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string matrix::emptyStr</definition>
+        <argsstring></argsstring>
+        <name>emptyStr</name>
+        <initializer>= std::string()</initializer>
+        <briefdescription>
+<para>Empty string used for default pad in matrix printing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Matrix.hpp" line="37" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Matrix.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacematrix_1ab73e58c81eae2fdc97f26f72f31fe5ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; matrix::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Matrix&lt; T &gt; &amp;rhs)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+          <briefdescription><para>Output stream </para></briefdescription>
+        </param>
+        <param>
+          <type>const <ref refid="classmatrix_1_1Matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>rhs</declname>
+          <briefdescription><para><ref refid="classmatrix_1_1Matrix" kindref="compound">Matrix</ref> to output </para></briefdescription>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Display </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Matrix.hpp" line="302" column="1" bodyfile="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Matrix.hpp" bodystart="302" bodyend="323"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>matrix Namespace </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebwherry/Downloads/repos_github/Cpp-Libraries/lib/DataStructures/Matrix.hpp" line="34" column="1"/>
+  </compounddef>
+</doxygen>
