@@ -32,8 +32,11 @@ AR := ar
 # Assembler:
 AS := as
 
+# C compiler:
+#CC := gcc
+
 # C++ Compiler:
-CXX := g++
+#CXX := g++
 
 # Archiver flags:
 ARFLAGS = rscv
