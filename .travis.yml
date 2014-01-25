@@ -2,7 +2,10 @@ language: cpp
 compiler:
   - gcc
   - clang
-script: make && make install
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libboost-dev
+script: make && make test
 notifications:
   recipients:
     - calebwherry@gmail.com
