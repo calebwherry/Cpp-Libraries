@@ -10,7 +10,7 @@ before_script:
 script: make && make test && make run-test
 notifications:
   recipients:
-    - caleb@calebwherry.com
+    - calebwherry@gmail.com
     - robertofrances@gmail.com
   email:
     on_success: change
