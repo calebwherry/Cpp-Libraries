@@ -6,6 +6,7 @@ script: make && make install
 notifications:
   recipients:
     - calebwherry@gmail.com
+		- robertofrances@gmail.com
   email:
     on_success: change
     on_failure: always
