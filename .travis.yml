@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get install libboost-dev doxygen gsl-bin libgsl0-dev google-mock cmake libgtest-dev
 before_script:
   - cd /usr/src/gtest; sudo cmake CMakeLists.txt; sudo make; sudo cp *.a /usr/lib; cd -
-script: make && make test
+script: make && make test && make run-test
 notifications:
   recipients:
     - caleb@calebwherry.com
