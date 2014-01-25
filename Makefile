@@ -52,16 +52,20 @@ install:
 	done
 	@echo 'done.'
 
-# I probably should create a distclean as well but... too lazy right now.
+# Clean:
 clean:
 	$(MAKE) -C lib clean
 	$(MAKE) -C qa/test clean
 	@echo -n '** Deleting directory $(BIN_DIR)... '
 	@if [ -d $(BIN_DIR) ]; then $(RM) $(BIN_DIR); fi
 	@echo 'done.'
-	@echo -n '** Deleting directory $(DOC_DIR)... '
-	@if [ -d $(DOC_DIR)/html ]; then $(RM) $(DOC_DIR)/html; fi
-	@echo 'done.'
 	@echo -n '** Deleting build test directories $(ROOT_DIR)/qa/build*/... '
 	@$(RM) $(ROOT_DIR)/qa/build*/
+	@echo 'done.'
+
+# Cleanall:
+cleanall:
+	$(MAKE) clean
+	@echo -n '** Deleting directory $(DOC_DIR)... '
+	@if [ -d $(DOC_DIR)/html ]; then $(RM) $(DOC_DIR)/html; fi
 	@echo 'done.'
