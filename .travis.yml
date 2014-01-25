@@ -1,7 +1,7 @@
 language: cpp
 compiler:
   - gcc
-	- clang
+  - clang
 script: make && make install
 notifications:
   recipients:
