@@ -8,7 +8,7 @@ before_install:
 script: make && make test
 notifications:
   recipients:
-    - calebwherry@gmail.com
+    - caleb@calebwherry.com
     - robertofrances@gmail.com
   email:
     on_success: change
