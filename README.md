@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/calebwherry/Cpp-Libraries.png)](https://travis-ci.org/calebwherry/Cpp-Libraries)
-[![Coverage Status](https://coveralls.io/repos/calebwherry/Cpp-Libraries/badge.png)](https://coveralls.io/r/calebwherry/Cpp-Libraries)
 [![License](https://poser.pugx.org/leaphly/cart-bundle/license.png)](https://packagist.org/packages/leaphly/cart-bundle)
 
 # Cpp-Libraries
