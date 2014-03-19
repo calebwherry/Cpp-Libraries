@@ -12,7 +12,7 @@
 #############################
 
 default:
-  #$(MAKE) -C example-1
+	#$(MAKE) -C example-1
 
 clean:
-  #$(MAKE) -C example-1 clean
+	#$(MAKE) -C example-1 clean

@@ -31,31 +31,31 @@ namespace doublyLinkedList
 
 template <typename T>
 struct Node {
-  T datum;
-  Node* prev;
-  Node* next;
+	T datum;
+	Node* prev;
+	Node* next;
 };
 
 template <typename T>
 class DoublyLinkedList {
 
-  private:
-    Node<T>* head;
+	private:
+		Node<T>* head;
         Node<T>* tail;
         int size;
 
-  public:
-    DoublyLinkedList();
+	public:
+		DoublyLinkedList();
 
-    void pushBack(T data);
+		void pushBack(T data);
 
-    void pushFront(T data);
+		void pushFront(T data);
 
-    void popBack(T data);
+		void popBack(T data);
 
-    void popFront(T data);
+		void popFront(T data);
 
-    void print();
+		void print();
 
 }; // DoublyLinkedList
 

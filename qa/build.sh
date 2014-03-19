@@ -2,14 +2,14 @@
 ########################################
 ########################################
 ##
-##  File:
-##    \file test-build.sh
+##	File:
+##		\file test-build.sh
 ##
 ##  Description:
-##    \brief Test Build Script
+##		\brief Test Build Script
 ##
 ##  Author:
-##    \author J. Caleb Wherry
+##		\author J. Caleb Wherry
 ##
 ########################################
 ########################################
