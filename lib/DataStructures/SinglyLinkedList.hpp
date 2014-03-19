@@ -31,38 +31,38 @@ namespace singlyLinkedList
 
 template <typename T>
 struct Node {
-	T datum;
-	Node* next;
+  T datum;
+  Node* next;
 };
 
 template <typename T>
 class SinglyLinkedList {
 
-	private:
-		Node<T>* head;
-		Node<T>* tail;
+  private:
+    Node<T>* head;
+    Node<T>* tail;
         int size;
 
-	public:
-		SinglyLinkedList();
+  public:
+    SinglyLinkedList();
 
-		void insert(T data);
+    void insert(T data);
 
-		void remove(T data);
+    void remove(T data);
 
-		bool contains(T data);
+    bool contains(T data);
 
-		void pushBack(T data);
+    void pushBack(T data);
 
-		void pushFront(T data);
+    void pushFront(T data);
 
-		void popBack();
+    void popBack();
 
-		void popFront();
+    void popFront();
 
-		void print();
+    void print();
 
-		void printReverse();
+    void printReverse();
 
 }; // SinglyLinkedList
 

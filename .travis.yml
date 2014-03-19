@@ -13,5 +13,5 @@ notifications:
     - calebwherry@gmail.com
     - robertofrances@gmail.com
   email:
-    on_success: change
+    on_success: always
     on_failure: always

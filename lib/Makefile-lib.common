@@ -19,11 +19,11 @@ OBJS = $(SRC:.cpp=.o)
 default: $(LIB)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+  $(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIB): $(OBJS)
-	$(AR) $(ARFLAGS) $(LIB) $(OBJS)
-	@cp $(LIB) $(BIN_DIR)
+  $(AR) $(ARFLAGS) $(LIB) $(OBJS)
+  @cp $(LIB) $(BIN_DIR)
 
 clean:
-	$(RM) $(OBJS) $(LIB) $(GLOBAL_REMOVES)
+  $(RM) $(OBJS) $(LIB) $(GLOBAL_REMOVES)

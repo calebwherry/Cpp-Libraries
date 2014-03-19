@@ -40,18 +40,18 @@ int main()
 
     // Test 1:
     {
-	    SinglyLinkedList<char>* list = new SinglyLinkedList<char>();
+      SinglyLinkedList<char>* list = new SinglyLinkedList<char>();
 
-	    char var = 'A';
+      char var = 'A';
 
-	    for (int i = 1; i <= 10; i++) 
+      for (int i = 1; i <= 10; i++) 
         {
-		    list->pushBack(var);
-		    var++;
-	    }
+        list->pushBack(var);
+        var++;
+      }
 
-	    cout << endl << "Test 1 - Char list:" << endl << "\t";
-	    list->print();
+      cout << endl << "Test 1 - Char list:" << endl << "\t";
+      list->print();
         cout << endl;
     }
 

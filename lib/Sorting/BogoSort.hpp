@@ -30,15 +30,15 @@
 template <typename T>
 class BogoSort {
 
-	private:
-		std::vector<T> list;
+  private:
+    std::vector<T> list;
 
-	public:
+  public:
         BogoSort();
         
         BogoSort(std::vector<T> inList);
 
-		int sort();
+    int sort();
 
         void print();
 };
